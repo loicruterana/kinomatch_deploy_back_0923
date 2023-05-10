@@ -9,23 +9,19 @@
 <body>
 
     <div>
-        <%=data.title%>
+        <%=filmDetails.title%>
     </div>
-    <!-- <img src = " https://image.tmdb.org/t/p/original/<%= data.poster_path%>" style="max-width:100px;width:100%"> -->
+    <img src = " https://image.tmdb.org/t/p/original/<%= filmDetails.poster_path%>" style="max-width:100px;width:100%">
    
     <div>
-        Synopsis : <%=data.overview%>
+        Synopsis : <%=filmDetails.overview%>
     </div>
     <div>
-        Durée : <%=data.runtime%> minutes
+        Durée : <%=filmDetails.runtime%> minutes
     </div>
     <div>
-        Date de sortie : <%=data.release_date%>
+        Date de sortie : <%=filmDetails.release_date%>
     </div>
-    
-   
-    
-
-       
+      
 </body>
 </html>

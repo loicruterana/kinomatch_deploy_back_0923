@@ -1,35 +1,34 @@
-// librairies
+// pour utiliser les variables que l'on a définit dans le fichier .env on a besoin d'un petit module ! Il s'apelle dotenv
+// pour l'utiliser il faut d'ja l'installer (nom i dotenv), puis le require et on execute la méthonde "config" comme dit dans la doc
+require('dotenv').config();
+
+const bodyParser = require('body-parser');
+// on require le package express (module node = trouvé dans le dossier node_modules)
 const express = require('express');
 
-// vars
+// on récupère le module express-session, pour gérer les sessions
+const session = require('express-session');
+
+// on require notre router (module custom = on indique le chemin jusqu'au fichier)
+const router = require("./app/router.js")
+
+// j'execute la fonction "express"
+// je range la valeur de retour de la fonction express(), dans une variable "app"
 const app = express();
+
 const port = 3000;
+
+app.set('view engine', 'ejs');
+
+app.set('views', __dirname + '/app/views');
 
 const filmID = 420808;
 
 const api_key = '82184d982ef42b5548f45d546dd62ddb';
 
-async function getMovieDetails(req, res) {
-  
-  let data = []
+app.use(router);
 
-      try {
-          const response = await fetch(`https://api.themoviedb.org/3/movie/${filmID}?api_key=${api_key}&language=fr-FR`)
-          // const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=82184d982ef42b5548f45d546dd62ddb&language=fr-FR`)
-          const responseData = await response.json()
-          data = responseData
 
-          console.log(data)
-          
-          res.render('testPageFilm', {data});
-
-      } catch (error) {
-          
-      }
-  // return data  
-}
-
-getMovieDetails();
 
 async function getWatchProvider(req, res) {
   
@@ -79,26 +78,6 @@ async function getAllGenres(req, res) {
       }}
 
 // getAllGenres();
-
-// View engine setup
-app.set('view engine', 'ejs');
-
-
-
-
-app.get('/', getAllGenres);
-
-app.get('/film', getMovieDetails);
-
-
-
-
-app.use((err, req, res, next) => {
-  if (err.name === 'UnauthorizedError') {
-    console.log('<< 401 UNAUTHORIZED - Invalid Token');
-    res.status(401).send('Invalid token');
-  }
-});
 
 
 app.listen(port, () => {
