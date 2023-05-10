@@ -12,7 +12,12 @@
         <%=filmDetails.title%>
     </div>
     <img src = " https://image.tmdb.org/t/p/original/<%= filmDetails.poster_path%>" style="max-width:100px;width:100%">
-   
+    <div>
+    Streaming :
+    <% for(let elem of watchProvider) { %>
+         <%=elem.provider_name%> 
+    <% } %>
+    </div>
     <div>
         Synopsis : <%=filmDetails.overview%>
     </div>
@@ -22,6 +27,10 @@
     <div>
         Date de sortie : <%=filmDetails.release_date%>
     </div>
-      
+    <a href="/">Home</a>
+   
+    
+
+       
 </body>
 </html>

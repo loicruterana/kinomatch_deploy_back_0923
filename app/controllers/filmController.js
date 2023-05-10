@@ -5,7 +5,8 @@ const filmController = {
     getMovieDetails: async (request, response) => {
         try {
             const filmDetails = await dataMapper.getMovieDetailsRequest();
-            response.render('filmPage', {filmDetails})
+            const watchProvider = await dataMapper.getWatchProviderRequest();
+            response.render('filmPage', {filmDetails, watchProvider})
         } catch (error) {
             console.trace(error);
             response.render('404'); 
