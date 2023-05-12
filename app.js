@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const router = require("./app/router.js")
+const cors= require('cors')
 
 const app = express();
 
@@ -10,7 +11,7 @@ const port = 4000;
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
-
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 

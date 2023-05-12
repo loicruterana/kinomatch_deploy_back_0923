@@ -22,5 +22,4 @@ router.post('/login', userController.loginAction);
 // router.get('/logout', checkLogged, userController.logout);
 // router.get('/profil', checkLogged, userController.profil);
 
-// on n'oublie pas d'exporter le module (= le rendre dispo aux autre modules, aux autres fichiers)
 module.exports = router

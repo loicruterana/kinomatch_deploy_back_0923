@@ -8,11 +8,15 @@ const dataMapper = {
 
     getMovieDetailsRequest: async () => {
         
+        
+
         let data = []
         const response = await fetch(`https://api.themoviedb.org/3/movie/${filmID}?api_key=${api_key}&language=fr-FR`)
         const responseData = await response.json()
         data = responseData
         
+
+        console.log(data);
         return data;        
     },
 
