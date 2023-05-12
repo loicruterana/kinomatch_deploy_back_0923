@@ -10,6 +10,9 @@ const { User } = require('./app/models/user');
 const db = {
   create: async () => {
     try {
+    
+        console.log({User});
+
       await sequelize.drop();
       await sequelize.sync();
       // seulement après avoir crée les tables, je peux mettre des choses dedans

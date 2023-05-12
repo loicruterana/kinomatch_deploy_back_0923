@@ -1,5 +1,6 @@
 // #merciOQuiz
 const { User } = require('../models/user');
+console.log('User');
 const bcrypt = require('bcrypt');
 
 const userController = {
@@ -69,7 +70,7 @@ const userController = {
         error: error,
         data: data,
       });
-    }
+    }d
   },
   login: function(req, res) {
     res.render('login');
