@@ -16,15 +16,11 @@ User.init({
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  role: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: 'member',
-  },
+
 }, {
   sequelize,
   tableName: "users",
 });
 
 
-module.exports = { User };
+module.exports = { User } ;

@@ -15,10 +15,12 @@ router.get('/', mainController.getHomePage);
 router.get('/film', filmController.getMovieDetails);
 
 // routes login
-router.get('/signup', userController.signup);
+// router.get('/signup', userController.signup);
 router.post('/signup', userController.signupAction);
-router.get('/login', userController.login);
+
+// router.get('/login', userController.login);
 router.post('/login', userController.loginAction);
+
 // router.get('/logout', checkLogged, userController.logout);
 // router.get('/profil', checkLogged, userController.profil);
 
