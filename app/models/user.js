@@ -23,8 +23,8 @@ User.init({
   },
 }, {
   sequelize,
-  tableName: "user",
+  tableName: "users",
 });
 
 
-module.exports = User;
+module.exports = { User };

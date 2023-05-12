@@ -1,7 +1,8 @@
 // #merciOQuiz
-const { User } = require('../models/user');
-console.log('User');
+const  { User }  = require('../models/user');
 const bcrypt = require('bcrypt');
+
+console.log(User);
 
 const userController = {
   signup: function(req, res) {
@@ -24,11 +25,8 @@ const userController = {
     }
 
     // on vérifie que l'utilisateur n'existe pas déjà
-
     const user = await User.findOne({ where: { email: data.email } });
-    console.log(user);
     if (user) {
-      console.log(user);
       error = 'Email déjà utilisé';
     }
 
@@ -70,7 +68,7 @@ const userController = {
         error: error,
         data: data,
       });
-    }d
+    }
   },
   login: function(req, res) {
     res.render('login');
@@ -119,26 +117,7 @@ const userController = {
       });
     }
   },
-  logout: function(req, res) {
-    delete req.session.user;
-    delete req.session.wishlist; // on supprime tout ce qu'il y a en session
-    // sinon si toto se connecte après alexis il aura la wishlist d'alexis, pas top
-    res.redirect('/');
-  },
-  profil: async function(req, res) {
-    try {
-      const user = await User.findByPk(req.session.user.id);
-      res.render('profil', {
-        user: user,
-      });
-    }
-    catch (error) {
-      console.log(error);
-      res.status(500).render('error', {
-          message: 'Le serveur n\'a pas pu traiter correctement votre requête.',
-      });
-    }
-  },
+ 
 };
 
 module.exports = userController;

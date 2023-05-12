@@ -18,7 +18,7 @@ router.get('/film', filmController.getMovieDetails);
 router.get('/signup', userController.signup);
 router.post('/signup', userController.signupAction);
 router.get('/login', userController.login);
-// router.post('/login', userController.loginAction);
+router.post('/login', userController.loginAction);
 // router.get('/logout', checkLogged, userController.logout);
 // router.get('/profil', checkLogged, userController.profil);
 

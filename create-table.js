@@ -5,13 +5,13 @@ const bcrypt = require('bcrypt');
 // un require va executer le code du module ciblé
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const { User } = require('./app/models/user');
+const { User, Film } = require('./app/models');
 
 const db = {
   create: async () => {
     try {
     
-        console.log({User});
+        console.log(User);
 
       await sequelize.drop();
       await sequelize.sync();
