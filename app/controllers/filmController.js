@@ -1,5 +1,7 @@
 const dataMapper = require('../dataMapper.js');
 
+const TMDB = require("../utils/TMDB");
+
 const filmController = {
 
     getMovieDetails: async (request, response) => {
@@ -11,6 +13,11 @@ const filmController = {
             console.trace(error);
             response.render('404'); 
         }
+    },
+
+    fetchAll: async (req, res) => {
+        const searchTerm = req.query.searchTerm;
+        const movies = await TMDB.fetchMovie(searchTerm);
     }
 }
 
