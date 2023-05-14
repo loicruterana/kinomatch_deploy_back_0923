@@ -1,31 +1,37 @@
 // #merciOQuiz
-const  { User }  = require('../models/user');
+const { User } = require('../models/user');
 const bcrypt = require('bcrypt');
 
 console.log(User);
 
 const userController = {
-  signup: function(req, res) {
+  signup: function (req, res) {
     res.render('signup');
+    console.log('parici');
   },
 
-  signupAction: async function(req, res) {
+  signupAction: async function (req, res) {
     // objectif : valider ou non l'inscription
     // récupérer les infos envoyées
     const data = req.body;
-
-    console.log(data);
+    // console.log(req);
+    // console.log(data);
+    console.log('parla!');
 
     // essayer de créer un user à partir de ça
     let error = '';
     if (data.password !== data.passwordConfirm) {
       error = 'Le mot de passe ne correspond pas';
-    }
-    else if (data.password.length < 8) {
+      console.log('ok');
+      return;
+    } else if (data.password.length < 8) {
       error = 'Le mot de passe est trop court';
-    }
-    else if (!data.email) {
+      console.log('ok2');
+
+      return;
+    } else if (!data.email) {
       error = 'Email obligatoire';
+      return;
     }
 
     // on vérifie que l'utilisateur n'existe pas déjà
@@ -43,11 +49,10 @@ const userController = {
           email: data.email,
           password: hashedPassword,
         });
-
-        res.status(201).json({ message: "user created", user });
-
-      }
-      catch (error) {
+        console.log('passeparcreate');
+        res.status(201).json({ message: 'user created', user });
+        return;
+      } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error when creating the user' });
 
@@ -58,31 +63,31 @@ const userController = {
         //   res.status(500).render('error', {
         //     message: 'Le serveur n\'a pas pu traiter correctement votre requête.',
         //   });
-          return;
-        }
+        return;
       }
-    },
+    }
 
-    // // si c'est ok, le rediriger vers la page de connexion
-    // if (!error) {
-    //   res.redirect('/login');
-    // }
-    // // sinon le remettre sur le formulaire avec des messages d'erreur
-    // else {
-    //   res.render('signup', {
-    //     error: error,
-    //     data: data,
-    //   });
-    // }
+    return;
+  },
+
+  // // si c'est ok, le rediriger vers la page de connexion
+  // if (!error) {
+  //   res.redirect('/login');
+  // }
+  // // sinon le remettre sur le formulaire avec des messages d'erreur
+  // else {
+  //   res.render('signup', {
+  //     error: error,
+  //     data: data,
+  //   });
+  // }
   // },
 
-
-  login: function(req, res) {
+  login: function (req, res) {
     res.render('login');
   },
 
-  
-  loginAction: async function(req, res) {
+  loginAction: async function (req, res) {
     // on part des données saisies
     const data = req.body;
 
@@ -90,11 +95,10 @@ const userController = {
     let error = '';
     if (!data.email) {
       error = 'Email obligatoire';
-    }
-    else if(!data.password) {
+    } else if (!data.password) {
       error = 'Mot de passe obligatoire';
     }
-    
+
     let user;
 
     if (!error) {
@@ -103,7 +107,7 @@ const userController = {
       if (!user) {
         error = 'Couple email/mot de passe invalide';
       }
-      
+
       // on vérifie que le mot de passe est le bon
       const checkPassword = await bcrypt.compare(data.password, user.password);
       if (!checkPassword) {
@@ -117,8 +121,7 @@ const userController = {
       req.session.user = user;
       // et rediriger sur la home
       res.redirect('/');
-    }
-    else {
+    } else {
       // sinon on affiche les erreurs
       res.render('login', {
         error: error,
@@ -126,7 +129,6 @@ const userController = {
       });
     }
   },
- 
 };
 
 module.exports = userController;
