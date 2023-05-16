@@ -18,7 +18,7 @@ const TMDB = {
 
     filterMovieByYear: async (year) => {
 
-        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.asc&include_adult=false&include_video=false&page=1&${year}`)
+        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.asc&include_adult=false&include_video=false&page=${year}&${year}`)
     },
 
     filterMovieByWatchProvider: async (providerID) => {

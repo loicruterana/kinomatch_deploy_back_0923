@@ -11,6 +11,7 @@ const router = express.Router();
 
 // ici j'utilise la méthode getHomePage que j'ai créé dans mon controlleur et qui s'occupe de render la page
 router.get('/', mainController.getHomePage);
+
 // ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
 router.get('/film', filmController.getMovieDetails);
 
