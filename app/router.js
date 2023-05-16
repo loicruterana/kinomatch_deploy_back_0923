@@ -15,6 +15,9 @@ router.get('/', mainController.getHomePage);
 // ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
 router.get('/film', filmController.getMovieDetails);
 
+// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
+router.get('/films', filmController.filterMovieByGenre);
+
 // routes login
 // router.get('/signup', userController.signup);
 router.post('/signup', userController.signupAction);
