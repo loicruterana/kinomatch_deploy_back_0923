@@ -4,9 +4,9 @@ const TMDB = {
 
 
 
-    getMovieDetails: async (movieID) => {
+    getMovieDetails: async () => {
 
-        return fetch(`${TMDB.API_URL}/movie/${movieID}?api_key=${TMDB.API_KEY}&language=fr-FR`)
+        return fetch(`${TMDB.API_URL}/movie/78?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
 

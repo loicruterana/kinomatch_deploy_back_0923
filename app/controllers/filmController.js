@@ -3,15 +3,20 @@ const TMDB = require("../utils/TMDB");
 const filmController = {
 
     getMovieDetails: async (req, res) => {
-        // const movieID = req.body.genreID;
-        const movieID = '11878';
-        const movies = await TMDB.getMovieDetails(movieID);
+        const movieID = req.query.movieID;
+        // const movieID = '11878';
+        const response = await TMDB.getMovieDetails();
+        const movie = await response.json();
+        console.log(movie)
+        
         return;
     },
 
     filterMovieByGenre: async (req, res) => {
-        const genreID = req.body.genreID;
-        const movies = await TMDB.filterMovieByGenre(genreID);
+        const genreID = req.query.genreID;
+        const response = await TMDB.filterMovieByGenre();
+        const chosenGenre = await response.json();
+        console.log(chosenGenre);
         return;
     },
 
