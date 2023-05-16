@@ -5,10 +5,10 @@ const bcrypt = require('bcrypt');
 console.log(User);
 
 const userController = {
-  signup: function (req, res) {
-    res.render('signup');
-    console.log('parici');
-  },
+  // signup: function (req, res) {
+  //   res.render('signup');
+  //   console.log('parici');
+  // },
 
   signupAction: async function (req, res) {
     // objectif : valider ou non l'inscription
@@ -23,14 +23,16 @@ const userController = {
     if (data.password !== data.passwordConfirm) {
       error = 'Le mot de passe ne correspond pas';
       console.log('ok');
+      res.json(error);
       return;
     } else if (data.password.length < 8) {
       error = 'Le mot de passe est trop court';
       console.log('ok2');
-
+      res.json(error);
       return;
     } else if (!data.email) {
       error = 'Email obligatoire';
+      res.json(error);
       return;
     }
 
@@ -38,6 +40,9 @@ const userController = {
     const user = await User.findOne({ where: { email: data.email } });
     if (user) {
       error = 'Email déjà utilisé';
+      res.json(error);
+      return;
+
     }
 
     if (!error) {
@@ -55,14 +60,6 @@ const userController = {
       } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error when creating the user' });
-
-        // if (error.errors && error.errors[0].type === 'Validation error') {
-        //   error = 'Email invalide';
-        // }
-        // else {
-        //   res.status(500).render('error', {
-        //     message: 'Le serveur n\'a pas pu traiter correctement votre requête.',
-        //   });
         return;
       }
     }
@@ -70,22 +67,9 @@ const userController = {
     return;
   },
 
-  // // si c'est ok, le rediriger vers la page de connexion
-  // if (!error) {
-  //   res.redirect('/login');
-  // }
-  // // sinon le remettre sur le formulaire avec des messages d'erreur
-  // else {
-  //   res.render('signup', {
-  //     error: error,
-  //     data: data,
-  //   });
-  // }
+  // login: function (req, res) {
+  //   res.render('login');
   // },
-
-  login: function (req, res) {
-    res.render('login');
-  },
 
   loginAction: async function (req, res) {
     // on part des données saisies
@@ -95,8 +79,12 @@ const userController = {
     let error = '';
     if (!data.email) {
       error = 'Email obligatoire';
+      res.json(error);
+      return;
     } else if (!data.password) {
       error = 'Mot de passe obligatoire';
+      res.json(error);
+      return;
     }
 
     let user;
@@ -106,12 +94,17 @@ const userController = {
       const user = await User.findOne({ where: { email: data.email } });
       if (!user) {
         error = 'Couple email/mot de passe invalide';
+        res.json(error);
+        return;
       }
 
       // on vérifie que le mot de passe est le bon
       const checkPassword = await bcrypt.compare(data.password, user.password);
       if (!checkPassword) {
         error = 'Couple email/mot de passe invalide';
+        res.json(error);
+        return;
+
       }
     }
 
@@ -120,13 +113,20 @@ const userController = {
       // il faut mémoriser l'user en session
       req.session.user = user;
       // et rediriger sur la home
-      res.redirect('/');
+      res.status(201).json({ message: 'user validated', user });
+      return;
+      // res.redirect('/');
     } else {
       // sinon on affiche les erreurs
-      res.render('login', {
-        error: error,
-        data: data,
-      });
+      res.status(500).json({ message: 'Error when logging the user', error: error,
+      data: data });
+      // res.render('login', {
+      //   error: error,
+      //   data: data,
+      // });
+
+
+      
     }
   },
 };
