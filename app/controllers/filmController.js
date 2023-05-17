@@ -11,6 +11,16 @@ const filmController = {
         return;
     },
 
+    getMovieWatchProvider: async (req, res) => {
+        const movieID = req.query.movieID;
+        const response = await TMDB.getMovieWatchProvider(movieID);
+        const provider = await response.json();
+        res.json(provider);  
+        return;
+
+    },
+
+
     filterMovieByGenre: async (req, res) => {
         const genreID = req.query.genreID;
         const response = await TMDB.filterMovieByGenre(genreID);
