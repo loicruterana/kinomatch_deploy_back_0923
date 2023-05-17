@@ -3,13 +3,10 @@ const TMDB = require("../utils/TMDB");
 const filmController = {
 
     getMovieDetails: async (req, res) => {
-        const movieID = '346';
-        const response1 = await TMDB.getMovieDetails(movieID);
-        const response2 = await TMDB.getMovieCredits(movieID);
-        const movie1 = await response1.json();
-        const movie2 = await response2.json();
-        console.log(movie1, movie2)
-        res.json({movie1, movie2});  
+        const movieID = req.query.movieID;
+        const response = await TMDB.getMovieDetails(movieID);
+        const movie = await response.json();
+        res.json(movie);  
         return;
     },
 
