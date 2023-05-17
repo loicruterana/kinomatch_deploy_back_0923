@@ -43,6 +43,15 @@ const filmController = {
         res.json(genresList);  
         return;
     },
+
+    getProvidersList: async (req, res) => {
+
+        const response = await TMDB.getGenresList();
+        const providersList = await response.json();
+        console.log(providersList);
+        res.json(providersList);  
+        return;
+    },
     
     filterMovieByWatchProvider: async (req, res) => {
         const providerID = req.query.providerID;

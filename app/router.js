@@ -21,6 +21,9 @@ router.get('/films', filmController.filterMovieByGenre);
 // ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
 router.get('/genres', filmController.getGenresList)
 
+// ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
+router.get('/providers', filmController.getProvidersList)
+
 // routes login
 // router.get('/signup', userController.signup);
 router.post('/signup', userController.signupAction);
