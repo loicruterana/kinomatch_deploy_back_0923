@@ -46,7 +46,7 @@ const filmController = {
 
     getProvidersList: async (req, res) => {
 
-        const response = await TMDB.getGenresList();
+        const response = await TMDB.getProvidersList();
         const providersList = await response.json();
         console.log(providersList);
         res.json(providersList);  
