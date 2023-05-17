@@ -4,10 +4,17 @@ const filmController = {
 
     getMovieDetails: async (req, res) => {
         const movieID = req.query.movieID;
-        // const movieID = '11878';
         const response = await TMDB.getMovieDetails(movieID);
         const movie = await response.json();
         res.json(movie);  
+        return;
+    },
+
+    getMovieCredits: async (req, res) => {
+        const movieID = req.query.movieID;
+        const response = await TMDB.getMovieCredits(movieID);
+        const credits = await response.json();
+        res.json(credits);  
         return;
     },
 
@@ -17,9 +24,7 @@ const filmController = {
         const provider = await response.json();
         res.json(provider);  
         return;
-
     },
-
 
     filterMovieByGenre: async (req, res) => {
         const genreID = req.query.genreID;
