@@ -45,6 +45,5 @@ app.use((req, res, next) => {
 
 app.use(router);
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-});
+app.listen(process.env.PORT || 4000);
+  
