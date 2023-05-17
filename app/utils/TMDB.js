@@ -29,6 +29,12 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}/credits?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
+    getPeopleId: async (typedName) => {
+
+        return fetch(`${TMDB.API_URL}/search/person?api_key=${TMDB.API_KEY}&query=${typedName}`)
+
+    },
+
     filterMovieByWatchProvider: async (providerID) => {
 
         return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.asc&include_adult=false&include_video=false&page=1&with_watch_providers=${providerID}&watch_region=FR`)
@@ -42,8 +48,16 @@ const TMDB = {
 
     filterMovieByYear: async (year) => {
 
-        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.asc&include_adult=false&include_video=false&page=${year}&${year}`)
+        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=${year}&sort_by=popularity.desc`)
     },
+
+
+    filterMovieByPeople: async (actorID) => {
+
+        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&with_people=${peopleID}`)
+    },
+
+
 
     
 
