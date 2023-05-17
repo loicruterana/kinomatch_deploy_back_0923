@@ -20,17 +20,30 @@ const filmController = {
         return;
     },
 
+    getGenresList: async (req, res) => {
+
+        const response = await TMDB.getGenresList();
+        const genresList = await response.json();
+        console.log(genresList);
+        res.json(genresList);  
+        return;
+    },
+    
+    filterMovieByWatchProvider: async (req, res) => {
+        const providerID = req.query.providerID;
+        const movies = await TMDB.filterMovieByWatchProvider(providerID);
+        return;
+    },
+
     filterMovieByYear: async (req, res) => {
         const year = req.body.year;
         const movies = await TMDB.filterMovieByYear(year);
         return;
     },
 
-    filterMovieByWatchProvider: async (req, res) => {
-        const providerID = req.query.providerID;
-        const movies = await TMDB.filterMovieByWatchProvider(providerID);
-        return;
-    }
+   
+
+
 }
 
 module.exports = filmController;

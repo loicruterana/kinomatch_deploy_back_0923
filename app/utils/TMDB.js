@@ -15,6 +15,11 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}`)
     },
 
+    getGenresList: async () => {
+
+        return fetch(`${TMDB.API_URL}/genre/movie/list?api_key=${TMDB.API_KEY}&language=en-US`)
+    },
+
 
     filterMovieByYear: async (year) => {
 
