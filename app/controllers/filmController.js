@@ -28,7 +28,7 @@ const filmController = {
 
     filterMovieByGenre: async (req, res) => {
         const genreID = req.query.genreID;
-        const response = await TMDB.filterMovieByGenre();
+        const response = await TMDB.filterMovieByGenre(genreID);
         const chosenGenre = await response.json();
         console.log(chosenGenre);
         res.json(chosenGenre);
