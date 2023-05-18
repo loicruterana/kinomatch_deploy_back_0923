@@ -51,8 +51,8 @@ const filmController = {
 
         const typedName = req.body.typedName;
         const response = await TMDB.getPeopleId(typedName);
-        const peopleId = await response.json();
-        res.json(peopleId);  
+        const peopleID = await response.json();
+        res.json(peopleID);  
         return;
     },
 
