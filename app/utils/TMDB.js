@@ -35,11 +35,16 @@ const TMDB = {
 
     },
 
-
     filterMovie: async (year1, year2, providerID, genreID) => {
+        
 
         return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}&with_people=287&with_genres=${genreID}&with_watch_providers=${providerID}&watch_region=FR`)
     },
+
+    // filterMovie: async (year1, year2, providerID, genreID) => {
+
+    //     return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}&with_people=287&with_genres=${genreID}&with_watch_providers=${providerID}&watch_region=FR`)
+    // },
 
   // filterMovieByWatchProvider: async (providerID) => {
 
