@@ -19,7 +19,7 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
-    getMovieWatchProvider: async (movieID) => {
+    getMovieProvider: async (movieID) => {
 
         return fetch(`${TMDB.API_URL}/movie/${movieID}/watch/providers?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
@@ -40,22 +40,15 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.asc&include_adult=false&include_video=false&page=1&with_watch_providers=${providerID}&watch_region=FR`)
     },
 
-    filterMovieByGenre: async (genreID) => {
 
-        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}`)
+
+    filterMovieByYear: async (year1, year2) => {
+
+        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}&with_genres=18&with_people=287&with_genres=80`)
     },
 
 
-    filterMovieByYear: async (year) => {
-
-        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=${year}&sort_by=popularity.desc`)
-    },
-
-
-    filterMovieByPeople: async (actorID) => {
-
-        return fetch(`${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&with_people=${peopleID}`)
-    },
+  
 
 
 

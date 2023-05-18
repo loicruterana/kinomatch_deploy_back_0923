@@ -16,7 +16,7 @@ router.get('/', mainController.getHomePage);
 router.get('/film', filmController.getMovieDetails);
 
 // ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
-router.get('/films', filmController.filterMovieByGenre);
+router.get('/films', filmController.filterMovieByDecade);
 
 // ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
 router.get('/genres', filmController.getGenresList)
