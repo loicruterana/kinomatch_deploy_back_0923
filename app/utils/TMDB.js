@@ -3,16 +3,16 @@ const TMDB = {
     API_URL: "https://api.themoviedb.org/3",
 
     
-    // getGenresList: async () => {
+    getGenresList: async () => {
 
-    //     return fetch(`${TMDB.API_URL}/genre/movie/list?api_key=${TMDB.API_KEY}&language=fr-FR`)
-    // },
+        return fetch(`${TMDB.API_URL}/genre/movie/list?api_key=${TMDB.API_KEY}&language=fr-FR`)
+    },
 
-    // getProvidersList: async () => {
+    getProvidersList: async () => {
 
-    //     return fetch(`${TMDB.API_URL}/watch/providers/movie?api_key=${TMDB.API_KEY}&language=fr-FR`)
+        return fetch(`${TMDB.API_URL}/watch/providers/movie?api_key=${TMDB.API_KEY}&language=fr-FR`)
 
-    // },
+    },
 
     getMovieDetails: async (movieID) => {
 
