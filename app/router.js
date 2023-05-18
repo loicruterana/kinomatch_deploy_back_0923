@@ -13,10 +13,13 @@ const router = express.Router();
 router.get('/', mainController.getHomePage);
 
 // ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
-router.get('/film', filmController.getMovieDetails);
-
+router.get('/detail', filmController.getMovieDetails);
+// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
+router.get('/credits', filmController.getMovieCredits);
+// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
+router.get('/provider', filmController.getMovieProvider);
 // ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
-router.get('/films', filmController.filterMovieByDecade);
+router.get('/films', filmController.filterMovie);
 
 // ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
 router.get('/genres', filmController.getGenresList)
