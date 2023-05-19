@@ -32,5 +32,8 @@
     "sanitize": "^2.1.2",
     "save": "^2.9.0",
     "sequelize": "^6.31.1"
-  }
+  },
+  "browser": {
+    "crypto": false
+}
 }
