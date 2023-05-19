@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
 const  User  = require('./app/models/user');
+const  Watched  = require('./app/models/watched');
 
 const db = {
   create: async () => {
@@ -39,6 +40,10 @@ const db = {
       const member3 = await User.create({
         email: 'gerudo@mail.io',
         password: defaultPassword,
+      });
+
+      const fav = await Watched.create({
+        title: 'Yojimbo',
       });
     }
     catch (error) {

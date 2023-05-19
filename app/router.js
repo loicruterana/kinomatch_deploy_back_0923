@@ -4,7 +4,7 @@ const express = require('express');
 const mainController = require('./controllers/mainController.js');
 const userController = require('./controllers/userController');
 const filmController = require('./controllers/filmController.js');
-
+const watchedController = require('./controllers/watchedController.js');
 // on crée notre routeur
 const router = express.Router();
 
@@ -12,21 +12,22 @@ const router = express.Router();
 // ici j'utilise la méthode getHomePage que j'ai créé dans mon controlleur et qui s'occupe de render la page
 router.get('/', mainController.getHomePage);
 
-// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
 router.get('/detail', filmController.getMovieDetails);
-// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
-router.get('/credits', filmController.getMovieCredits);
-// ici j'utilise la méthode getMovieDetails que j'ai créé dans mon controlleur et qui s'occupe de render la page
-router.get('/provider', filmController.getMovieProvider);
-// ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
-// router.get('/films', filmController.filterMovie);
-// ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
-router.get('/films', filmController.filterMovie);
-// ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
-router.get('/genres', filmController.getGenresList)
 
-// ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
+router.get('/credits', filmController.getMovieCredits);
+
+router.get('/provider', filmController.getMovieProvider);
+
+router.get('/films', filmController.filterMovie);
+
+router.get('/genres', filmController.getGenresList);
+
 router.get('/providers', filmController.getProvidersList)
+
+
+router.get('/watched', watchedController.watchedList);
+
+router.post('/watched', watchedController.addWatchedMovie);
 
 // routes login
 // router.get('/signup', userController.signup);

@@ -17,6 +17,20 @@ User.init({
     allowNull: false,
   },
 
+  // watched: {
+  //   type: DataTypes.TEXT,
+  //   allowNull: true,
+  // },
+  // bookmarked: {
+  //   type: DataTypes.TEXT,
+  //   allowNull: true,
+  // },
+  // want_to_see: {
+  //   type: DataTypes.TEXT,
+  //   allowNull: true,
+  // }
+  
+
 }, {
   sequelize,
   tableName: "users",

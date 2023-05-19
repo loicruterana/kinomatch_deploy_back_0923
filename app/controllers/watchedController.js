@@ -1,14 +1,27 @@
-const { User, Film } = require('../models');
+const Watched  = require('../models/watched');
 
 const watchedController = {
 
-    saveWatchedMovie: async (req, res) => {
+    watchedList: async (req, res) => {
+        const watchedList = await Watched.findAll();
+        res.json(watchedList);
+    },
 
-        const movieId = request.body.id;
+    addWatchedMovie: async (req, res) => {
 
-        
-
+        const movieID = req.body.movieID;
+             
+        try {
+            const addMovie = await Watched.create({movieID});
+            res.status(201).json({ message: 'watched created', addMovie });
+            return;
+        } catch (error) {
+            console.log(error);
+            res.status(500);
+        }
     }
+
+
 }
 
 module.exports = watchedController;
