@@ -58,9 +58,9 @@ const filmController = {
 
     filterMovie: async (req, res) => {
        
-        const genreID = 18;
+        const genreID = req.query.genreID;
         // const genreID = req.query.genreID;
-        const providerID = 8;
+        const providerID = req.query.providerID;
         // const providerID = req.query.providerID;
         const decade = req.query.decade;
         // const decade = req.query.decade;
