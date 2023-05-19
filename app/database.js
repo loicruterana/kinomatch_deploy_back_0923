@@ -3,10 +3,11 @@
 // const sequelize = new Sequelize(process.env.PG_URL, { define: {
 //   underscored: true,
 // }});
-
+const pg = require('pg');
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialectOptions: {
+  dialectModule: pg,  
+  dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false
