@@ -21,7 +21,7 @@ router.get('/provider', filmController.getMovieProvider);
 // ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
 // router.get('/films', filmController.filterMovie);
 // ici j'utilise la méthode filterMovieByGenre que j'ai créé dans mon controlleur
-router.post('/films', filmController.filterMovie);
+router.get('/films', filmController.filterMovie);
 // ici j'utilise la méthode getGenresList que j'ai créé dans mon controlleur
 router.get('/genres', filmController.getGenresList)
 

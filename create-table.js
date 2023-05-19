@@ -30,6 +30,11 @@ const db = {
         email: 'kino@mail.io',
         password: defaultPassword,
       });
+
+      const member2 = await User.create({
+        email: 'kokiri@mail.io',
+        password: defaultPassword,
+      });
     }
     catch (error) {
       console.log(error);

@@ -58,9 +58,12 @@ const filmController = {
 
     filterMovie: async (req, res) => {
        
-        const genreID = req.query.genreID;
-        const providerID = req.query.providerID;
+        const genreID = 18;
+        // const genreID = req.query.genreID;
+        const providerID = 8;
+        // const providerID = req.query.providerID;
         const decade = req.query.decade;
+        // const decade = req.query.decade;
         const year1 = decade;
         const year2 = decade + 9;
         // const peopleID = req.query.peopleID;
@@ -68,6 +71,7 @@ const filmController = {
 
         const response = await TMDB.filterMovie(year1, year2, genreID, providerID);
         const filteredMovies = await response.json();
+        console.log(filteredMovies);
         res.json(filteredMovies);
         return;
     }
