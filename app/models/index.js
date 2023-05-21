@@ -1,20 +1,18 @@
-// const Film = require('./film');
-// const User = require('./user');
-// const Watched = require('./watched');
+const Film = require('./film');
+const User = require('./user');
+const Bookmarked = require('./bookmarked');
 
 
 
-// User.belongstoMany(Film, {
-//     through: "user_has_film",
+// User.belongsToMany(Film, {
+//     through: Watched,
 //     foreignKey: "user_id",
-//     otherKey: "film_id",
 //     as: "watchedList",
 //     });
 
 // Film.belongsToMany(User,{
-//     through: "user_has_film",
+//     through: Watched,
 //     foreignKey: "film_id",
-//     otherKey: "user_id",
 //     as: "watchedOwners",
 //     })
 
@@ -43,4 +41,4 @@
 // // })
 
 
-// module.exports = { Film, User };
+module.exports = { Film, User, Bookmarked };

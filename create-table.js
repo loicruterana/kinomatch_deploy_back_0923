@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 // un require va executer le code du module ciblé
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const  User  = require('./app/models/user');
-const  Watched  = require('./app/models/watched');
+const  { User, Film }  = require('./app/models');
+// const  Watched  = require('./app/models/watched');
 
 const db = {
   create: async () => {
@@ -42,9 +42,10 @@ const db = {
         password: defaultPassword,
       });
 
-      const fav = await Watched.create({
-        title: 'Yojimbo',
+      const film79 = await Film.create({
+        codeTMDB: 79    
       });
+     
     }
     catch (error) {
       console.log(error);

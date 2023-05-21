@@ -1,6 +1,6 @@
 const TMDB = require("../utils/TMDB");
 
-const filmController = {
+const TMDBController = {
 
    
     getMovieDetails: async (req, res) => {
@@ -10,8 +10,6 @@ const filmController = {
         res.json(details);  
         return;
     },
-
-    
 
     getMovieCredits: async (req, res) => {
         const movieID = req.query.movieID;
@@ -106,4 +104,4 @@ const filmController = {
 
 
 
-module.exports = filmController;
+module.exports = TMDBController;

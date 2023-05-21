@@ -5,8 +5,8 @@ class Film extends Model {}
 
 Film.init({
   codeTMDB: {
-    type: DataTypes.TEXT,
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    allowNull: true,
   },
 }, {
   sequelize,
@@ -14,4 +14,4 @@ Film.init({
 });
 
 
-module.exports =   Film  ;
+module.exports = Film;

@@ -129,6 +129,24 @@ const userController = {
       
     }
   },
+
+  logout: function(req, res) {
+    delete req.session.user;
+    
+    res.status(201).json({ message: 'user loggedout' });
+  },
+
+  deleteAccount: async function(req, res) {
+
+    const data = req.body;
+
+    const user = await User.findOne({ where: { email: data.email }}); 
+                if (user) { await user.destroy();} // deletes the user
+            
+    res.status(201).json({ message: 'user deleted', user });
+    return;
+    
+  }
 };
 
 module.exports = userController;
