@@ -22,10 +22,11 @@ const bookmarkedController = {
     addBookmarkedMovie: async (req, res) => {
 
         const UserID = '3';
-        const movieID = '376';
+        const movieID = '335';
 
         // const UserID = req.session.user;
         // const UserID = req.body.UserID;
+
         // const movieID = req.body.MovieID;
 
 
