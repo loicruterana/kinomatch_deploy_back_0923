@@ -66,7 +66,6 @@ const TMDBController = {
         const year2 = decade + 9;
         // const peopleID = req.query.peopleID;
 
-
         const response = await TMDB.filterMovie(year1, year2, genreID, providerID);
         const filteredMovies = await response.json();
         console.log(filteredMovies.total_pages);
@@ -74,37 +73,46 @@ const TMDBController = {
         let total = filteredMovies.total_pages;
 
         let number = Math.random() * (total - 1) + 1;
+        let maxNumber = Math.random() * (500 - 1) + 1;
         const roundNumber = Math.round(number);
-        console.log(roundNumber)
+        let newNumber;
+
+        if(roundNumber >= 500){
+            newNumber = Math.round(maxNumber)
+        } else {
+            newNumber = roundNumber
+        }
+        console.log(newNumber)
           
-        const response2 = await TMDB.filterMovie(year1, year2, genreID, providerID, roundNumber);
-        const filteredRandomMovies = await response.json();
-        res.json(filteredRandomMovies);
+        res.json(filteredMovies);
         return;
-    }
-    // filterMovieByGenre: async (req, res) => {
-    //     const genreID = req.query.genreID;
-    //     const response = await TMDB.filterMovieByGenre(genreID);
-    //     const chosenGenre = await response.json();
-    //     console.log(chosenGenre);
-    //     res.json(chosenGenre);
-    //     return;
-    // },
+    },
 
-    // filterMovieByWatchProvider: async (req, res) => {
-    //     const providerID = req.query.providerID;
-    //     const movies = await TMDB.filterMovieByWatchProvider(providerID);
-    //     return;
-    // },
+    filterRandomMovie: async (req, res) => {
+       
 
-    // filterMovieByPeople: async (req, res) => {
-    //     const peopleID = req.query.peopleID;
-    //     const response = await TMDB.filterMovieByActor(peopleID);
-    //     const chosenPeople = await response.json();
-    //     console.log(chosenPeople);
-    //     res.json(chosenPeople);
-    //     return;
-    // },
+        const genreID = req.query.genreID;
+
+        const providerID = req.query.providerID;
+       
+        const decade = req.query.decade;
+
+        const year1 = decade;
+        const year2 = decade + 9;
+        // const peopleID = req.query.peopleID;
+        const randomPage = 4;
+        // const randomPage = req.query.randomPage;
+
+        const response = await TMDB.filterRandomMovie(year1, year2, genreID, providerID, randomPage);
+        const filteredMovies = await response.json();
+    
+        res.json(filteredMovies);
+        return;
+    },
+
+  
+
+
 
    
     
