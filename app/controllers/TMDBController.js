@@ -73,29 +73,7 @@ const TMDBController = {
         res.json(filteredMovies);
         return;
     }
-    // filterMovieByGenre: async (req, res) => {
-    //     const genreID = req.query.genreID;
-    //     const response = await TMDB.filterMovieByGenre(genreID);
-    //     const chosenGenre = await response.json();
-    //     console.log(chosenGenre);
-    //     res.json(chosenGenre);
-    //     return;
-    // },
-
-    // filterMovieByWatchProvider: async (req, res) => {
-    //     const providerID = req.query.providerID;
-    //     const movies = await TMDB.filterMovieByWatchProvider(providerID);
-    //     return;
-    // },
-
-    // filterMovieByPeople: async (req, res) => {
-    //     const peopleID = req.query.peopleID;
-    //     const response = await TMDB.filterMovieByActor(peopleID);
-    //     const chosenPeople = await response.json();
-    //     console.log(chosenPeople);
-    //     res.json(chosenPeople);
-    //     return;
-    // },
+   
 
    
     
