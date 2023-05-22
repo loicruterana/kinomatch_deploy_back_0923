@@ -62,8 +62,8 @@ const TMDBController = {
         // const providerID = req.query.providerID;
         const decade = req.query.decade;
         // const decade = req.query.decade;
-        const year1 = decade;
-        const year2 = decade + 9;
+        const year1 = Number(decade);
+        const year2 = Number(decade) + 9;
         // const peopleID = req.query.peopleID;
 
 
