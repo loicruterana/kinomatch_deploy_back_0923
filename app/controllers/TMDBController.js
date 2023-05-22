@@ -69,8 +69,17 @@ const TMDBController = {
 
         const response = await TMDB.filterMovie(year1, year2, genreID, providerID);
         const filteredMovies = await response.json();
-        console.log(filteredMovies);
-        res.json(filteredMovies);
+        console.log(filteredMovies.total_pages);
+        
+        let total = filteredMovies.total_pages;
+
+        let number = Math.random() * (total - 1) + 1;
+        const roundNumber = Math.round(number);
+        console.log(roundNumber)
+          
+        const response2 = await TMDB.filterMovie(year1, year2, genreID, providerID, roundNumber);
+        const filteredRandomMovies = await response.json();
+        res.json(filteredRandomMovies);
         return;
     }
     // filterMovieByGenre: async (req, res) => {
