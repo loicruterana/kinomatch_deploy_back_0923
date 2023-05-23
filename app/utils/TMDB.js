@@ -46,12 +46,8 @@ const TMDB = {
         let urlProvider = '';
         let urlGenre = '';
 
-<<<<<<< HEAD
 
-        if(year1 & year2!== NaN){
-=======
         if(year1 !== NaN){
->>>>>>> testloic
             urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
         } 
 
