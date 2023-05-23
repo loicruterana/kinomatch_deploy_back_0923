@@ -18,14 +18,16 @@ const bookmarkedController = {
             // include: 'bookmarked',       
         });
 
-        const movieID = bookmarkedList.film_id
+        console.log(bookmarkedList);
 
-        const response = await TMDB.getMovieDetails(movieID);
-        const details = await response.json();
-        console.log(details)
+        // const movieID = bookmarkedList.film_id
+
+        // const response = await TMDB.getMovieDetails(movieID);
+        // const details = await response.json();
+        // console.log(details)
         // details.name
         // res.json(details);
-        bookmarkedList.film_name = 'sfsdf';
+        // bookmarkedList.film_name = 'sfsdf';
 
         res.json(bookmarkedList);
     },
