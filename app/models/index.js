@@ -16,29 +16,29 @@ const Bookmarked = require('./bookmarked');
 //     as: "watchedOwners",
 //     })
 
-// // User.belongstoMany(Film, {
-// //     foreignKey: "user_id",
-// //     foreignKey: "film_id",
-// //     as: "want_to_seeList",
-// // });
+// User.belongstoMany(Film, {
+//     foreignKey: "user_id",
+//     foreignKey: "film_id",
+//     as: "want_to_seeList",
+// });
 
-// // Film.belongsToMany(User,{
-// //     foreignKey: "user_id",
-// //     foreignKey: "film_id",
-// //     as: "want_to_seeOwners",
-// // })
+// Film.belongsToMany(User,{
+//     foreignKey: "user_id",
+//     foreignKey: "film_id",
+//     as: "want_to_seeOwners",
+// })
 
-// // User.belongstoMany(Film, {
-// //     foreignKey: "user_id",
-// //     foreignKey: "film_id",
-// //     as: "bookmarked",
-// // });
+// User.belongstoMany(Film, {
+//     foreignKey: "user_id",
+//     foreignKey: "film_id",
+//     as: "bookmarked",
+// });
 
-// // Film.belongsToMany(User,{
-// //     foreignKey: "user_id",
-// //     foreignKey: "film_id",
-// //     as: "bookmarkedOwners",
-// // })
+// Film.belongsToMany(User,{
+//     foreignKey: "user_id",
+//     foreignKey: "film_id",
+//     as: "bookmarkedOwners",
+// })
 
 
 module.exports = { Film, User, Bookmarked };
