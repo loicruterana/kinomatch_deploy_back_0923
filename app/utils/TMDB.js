@@ -1,7 +1,6 @@
 const TMDB = {
     API_KEY: "82184d982ef42b5548f45d546dd62ddb",
     API_URL: "https://api.themoviedb.org/3",
-    API_URL: "https://api.themoviedb.org/3",
     
     getGenresList: async () => {
 
@@ -47,9 +46,9 @@ const TMDB = {
         let urlGenre = '';
 
 
-        if(year1 !== NaN){
+        if(year1 & year2 !== NaN){
             urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
-        } 
+        }
 
         if(providerID !== undefined){
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
