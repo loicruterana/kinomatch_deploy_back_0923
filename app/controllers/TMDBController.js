@@ -56,7 +56,7 @@ const TMDBController = {
 
     filterMovie: async (req, res) => {
        
-        const genreID = req.body.UserID;;
+        const genreID = req.body.genreID;;
         // const genreID = req.query.genreID;
         const providerID = req.query.providerID;
         // const providerID = req.query.providerID;
