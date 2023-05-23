@@ -7,7 +7,7 @@ const bookmarkedController = {
 
     bookmarkedList: async (req, res) => {
 
-        const UserID = '4';
+        const UserID = 'UserID';
         // const UserID = req.session.user;
 
         const bookmarkedList = await Bookmarked.findAll({
@@ -16,6 +16,16 @@ const bookmarkedController = {
               },
             // include: 'bookmarked',       
         });
+
+        const movieID = bookmarkedList.film_id
+
+        const response = await TMDB.getMovieDetails(movieID);
+        const details = await response.json();
+        console.log(details)
+        // details.name
+        // res.json(details);
+        bookmarkedList.film_name = 'sfsdf';
+
         res.json(bookmarkedList);
     },
 
