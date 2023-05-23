@@ -17,17 +17,7 @@ const bookmarkedController = {
               },
             // include: 'bookmarked',       
         });
-
-        console.log(bookmarkedList);
-
-        // const movieID = bookmarkedList.film_id
-
-        // const response = await TMDB.getMovieDetails(movieID);
-        // const details = await response.json();
-        // console.log(details)
-        // details.name
-        // res.json(details);
-        // bookmarkedList.film_name = 'sfsdf';
+        
 
         res.json(bookmarkedList);
     },
