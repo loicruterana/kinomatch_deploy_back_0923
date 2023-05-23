@@ -46,7 +46,7 @@ const TMDB = {
         let urlGenre = '';
 
 
-        if(year1 & year2 !== NaN){
+        if(!isNaN(year1)){
             urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
         }
 
