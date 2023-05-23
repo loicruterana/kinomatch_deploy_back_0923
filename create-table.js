@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // un require va executer le code du module ciblé
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const  { User, Film }  = require('./app/models');
+const  { User, Film, Bookmarked }  = require('./app/models');
 // const  Watched  = require('./app/models/watched');
 
 const db = {
