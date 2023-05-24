@@ -27,7 +27,7 @@ const bookmarkedController = {
         const { id, bookmarked } = req.body;
 
 
-        // const UserID = req.session.user;
+        // const UserID = req.session.users;
         // const UserID = req.body.UserID;
 
         // const movieID = req.body.MovieID;
