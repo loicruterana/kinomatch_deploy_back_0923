@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-const { User } = require('../models/user');
-=======
 const  User  = require('../models/user');
->>>>>>> main
 const bcrypt = require('bcrypt');
 const userController = {
   
