@@ -49,15 +49,14 @@ const bookmarkedController = {
 
     deleteBookmarkedMovie: async (req, res) => {
 
-        const UserID = '30';
-        const movieID = '90';
+        const { id, bookmarked } = req.body;
         // const UserID = req.session.user;
         // const UserID = req.body.UserID;
         // const movieID = req.body.MovieID;
              
         try {
 
-            const row = await Bookmarked.findOne({ where: { user_id: UserID, film_id: movieID, }, }); 
+            const row = await Bookmarked.findOne({ where: { user_id: id, film_id: bookmarked, }, }); 
             if (row) { await row.destroy();} // deletes the row }
             
             res.status(201).json({ message: 'bookmarked deleted', row });
