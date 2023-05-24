@@ -101,6 +101,51 @@ const TMDB = {
     
     },
 
+    filterMovieAdvanced: async (year1, year2, genreID, providerID, countryID, castID) => {
+
+        console.log(year1);
+        console.log(providerID);
+        console.log(genreID);
+        console.log(countryID);
+        // console.log(runtime1);
+        console.log(castID);
+
+        let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+        let urlDecade = '';
+        let urlProvider = '';
+        let urlGenre = '';
+        let urlCountry = '';
+        // let urlRuntime = '';
+        let urlCast = '';
+
+        if(!isNaN(year1)){
+            urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
+        }
+
+        if(providerID !== undefined){
+            urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
+        }
+
+        if(genreID !== undefined){
+            urlGenre = `&with_genres=${genreID}`;
+        }
+
+        if(countryID !== undefined){
+            urlCountry = `&with_origin_country=${countryID}`;
+        }
+
+        if(castID !== undefined){
+            urlcast = `&with_cast=${castID}`;
+        }
+       
+
+    
+        
+        const fullUrl = baseUrl + urlDecade + urlProvider + urlGenre + urlCountry + urlCast;
+        console.log(fullUrl)
+        return fetch(fullUrl)
+    
+    },
  
 
   

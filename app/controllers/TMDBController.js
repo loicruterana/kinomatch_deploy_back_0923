@@ -109,7 +109,35 @@ const TMDBController = {
         res.json(filteredMovies);
         return;
 
-    }
+    },
+
+    filterMovieAdvanced: async (req, res) => {
+       
+        const genreID = req.query.genreID;
+        // const genreID = req.query.genreID;
+        const providerID = req.query.providerID;
+        // const providerID = req.query.providerID;
+        const decade = req.query.decade;
+        // const decade = req.query.decade;
+        const year1 = Number(decade);
+        const year2 = Number(decade) + 9;
+        // const peopleID = req.query.peopleID;
+        const countryID = 'FR';
+        // const countryID = req.query.nationality; (ex : FR)
+        // const runtime = 120;
+        // const runtime = req.query.runtime; (ex : )
+        // const runtime2 = Number(runtime);
+        // const runtime1 = Number(runtime) - 30;
+        const peopleID = 287;
+        
+
+        const response = await TMDB.filterMovie(year1, year2, genreID, providerID, countryID, peopleID);
+        const filteredMovies = await response.json();
+       
+          
+        res.json(filteredMovies);
+        return;
+    },
 
     
 
