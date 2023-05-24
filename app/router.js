@@ -28,7 +28,8 @@ router.get('/provider', TMDBController.getMovieProvider);
 router.get('/films', TMDBController.filterMovie);
 //ici je sélectionne des films en fonction des filtres de la home
 router.get('/randomFilms', TMDBController.filterRandomMovie);
-
+//ici je sélectionne des films en fonction des filtres de la home
+router.get('/filmsAdvanced', TMDBController.filterMovieAdvanced);
 
 //ici j'insère un film dans ma bdd
 router.post('/addMovie', movieController.checkMovie);

@@ -50,9 +50,18 @@ const TMDB = {
             urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
         }
 
+        
+
+        if(providerID.constructor === Array){
+            let newArr = providerID.join(',').replace(/,/g, '|').split();
+            console.log(newArr);
+            providerID = newArr;
+        }
+
         if(providerID !== undefined){
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
         }
+        
 
         if(genreID !== undefined){
             urlGenre = `&with_genres=${genreID}`;
@@ -107,8 +116,8 @@ const TMDB = {
         console.log(providerID);
         console.log(genreID);
         console.log(countryID);
-        // console.log(runtime1);
         console.log(castID);
+        console.log('helloworld');
 
         let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
         let urlDecade = '';
@@ -135,7 +144,7 @@ const TMDB = {
         }
 
         if(castID !== undefined){
-            urlcast = `&with_cast=${castID}`;
+            urlCast = `&with_cast=${castID}`;
         }
        
 

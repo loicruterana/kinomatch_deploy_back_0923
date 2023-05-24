@@ -122,16 +122,22 @@ const TMDBController = {
         const year1 = Number(decade);
         const year2 = Number(decade) + 9;
         // const peopleID = req.query.peopleID;
-        const countryID = 'FR';
-        // const countryID = req.query.nationality; (ex : FR)
+        const countryID = req.query.countryID;
+        // const countryID = req.query.countryID; (ex : FR)
+        const castID = req.query.castID;
+        // const castID = req.query.castID; (ex : 287)
+
+
         // const runtime = 120;
         // const runtime = req.query.runtime; (ex : )
         // const runtime2 = Number(runtime);
         // const runtime1 = Number(runtime) - 30;
-        const peopleID = 287;
         
 
-        const response = await TMDB.filterMovie(year1, year2, genreID, providerID, countryID, peopleID);
+        console.log(castID);
+        console.log(countryID);
+
+        const response = await TMDB.filterMovieAdvanced(year1, year2, genreID, providerID, countryID, castID);
         const filteredMovies = await response.json();
        
           
