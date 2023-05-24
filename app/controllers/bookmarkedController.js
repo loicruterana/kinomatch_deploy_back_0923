@@ -1,5 +1,6 @@
 const Film = require('../models/film');
 const Bookmarked = require('../models/bookmarked');
+const TMDB = require("../utils/TMDB");
 
 
 const bookmarkedController = {
@@ -7,7 +8,7 @@ const bookmarkedController = {
 
     bookmarkedList: async (req, res) => {
 
-        const UserID = req.body.UserID;
+        const UserID = '4';
         // const UserID = req.session.user;
 
         const bookmarkedList = await Bookmarked.findAll({
@@ -16,6 +17,8 @@ const bookmarkedController = {
               },
             // include: 'bookmarked',       
         });
+        
+
         res.json(bookmarkedList);
     },
 

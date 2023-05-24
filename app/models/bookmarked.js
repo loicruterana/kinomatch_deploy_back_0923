@@ -10,8 +10,16 @@ Bookmarked.init({
       },
     film_id: {
         type: DataTypes.STRING
-        // allowNull defaults to true
-      }
+      }, 
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+
 }, {
   sequelize,
   tableName: "bookmarked",

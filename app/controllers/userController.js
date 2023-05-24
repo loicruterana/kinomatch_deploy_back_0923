@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const { User } = require('../models/user');
+=======
+const  User  = require('../models/user');
+>>>>>>> main
 const bcrypt = require('bcrypt');
 const userController = {
   
@@ -43,6 +47,7 @@ const userController = {
       }
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
+        req.session.user = user;
         return res.status(400).json({ error: 'Email ou mot de passe invalide' });
       }
       // Stockez l'utilisateur en session ici si vous utilisez des sessions
