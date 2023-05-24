@@ -43,7 +43,7 @@ router.post('/bookmarkedMovies', bookmarkedController.addBookmarkedMovie);
 router.delete('/bookmarkedMovies', bookmarkedController.deleteBookmarkedMovie);
 
 // routes login
-// route d'inscription
+// route de signup
 router.post('/signup', userController.signupAction);
 // route de connection
 router.post('/login', userController.loginAction);
