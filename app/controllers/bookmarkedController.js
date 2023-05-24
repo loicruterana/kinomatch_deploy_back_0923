@@ -24,7 +24,7 @@ const bookmarkedController = {
 
     addBookmarkedMovie: async (req, res) => {
 
-        const { userID, element } = req.body;
+        const { id, bookmarked } = req.body;
 
 
         // const UserID = req.session.user;
@@ -36,8 +36,8 @@ const bookmarkedController = {
              
         try {
             const addMovieToBookmarked = await Bookmarked.create({
-                user_id: userID,
-                film_id: element,
+                user_id: id,
+                film_id: bookmarked,
         });
             res.status(201).json({ message: 'bookmarked created', addMovieToBookmarked });
             return;
