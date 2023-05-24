@@ -52,15 +52,13 @@ const TMDB = {
 
         
 
-       
+        if(providerID.constructor === Array){
+            let newArr = providerID.join(',').replace(/,/g, '|').split();
+            console.log(newArr);
+            providerID = newArr;
+        }
 
         if(providerID !== undefined){
-
-            if(providerID.constructor === Array){
-                let newArr = providerID.join(',').replace(/,/g, '|').split();
-                console.log(newArr);
-                providerID = newArr;
-            }
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
         }
         
