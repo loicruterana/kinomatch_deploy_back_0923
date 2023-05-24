@@ -8,10 +8,16 @@ const app = express();
 
 const port = 4000;
 
+const corsOptions = {
+  origin: 'http://localhost:5173', // Remplacez par l'origine autorisée pour votre application
+  methods: ['GET', 'POST'], // Méthodes HTTP autorisées
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
+};
+
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.static('./public'));
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
