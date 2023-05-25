@@ -62,9 +62,11 @@ const userController = {
 
   deleteAccount: async function(req, res) {
 
-    const { id, email, password, passwordConfirm } = req.query;
+    const { userID } = req.query;
 
-    const user = await User.findOne({ where: { id: id.toString() }}); 
+    console.log(userID);
+
+    const user = await User.findOne({ where: { id: userID }}); 
                 if (user) { await user.destroy();} // deletes the user
             
     res.status(201).json({ message: 'user deleted', user });
