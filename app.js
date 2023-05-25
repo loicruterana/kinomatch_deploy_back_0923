@@ -38,7 +38,10 @@ app.use(
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // en production il faudra utiliser HTTPS
+    cookie: { secure: false },
+    sameSite: 'none',
+    secure: false,
+    httpOnly: false, // en production il faudra utiliser HTTPS
   })
 );
 
