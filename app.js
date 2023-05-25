@@ -25,11 +25,11 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
 
-// // Middleware to set the Access-Control-Allow-Origin header
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
-//   next();
-// });
+// Middleware to set the Access-Control-Allow-Origin header
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://deploy-back-kinomatch.herokuapp.com'); // Allow requests from any origin
+  next();
+});
 
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
