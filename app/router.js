@@ -65,7 +65,7 @@ router.post('/signup', userController.signupAction);
 // route de connection
 router.post('/login', userController.loginAction);
 // route de déconnection
-router.get('/logout', checkLogged, userController.logout);
+router.get('/logout', userController.logout);
 // route de suppression de compte
 router.delete('/deleteAccount', userController.deleteAccount);
 

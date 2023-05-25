@@ -49,8 +49,6 @@ const bookmarkedController = {
     deleteBookmarkedMovie: async (req, res) => {
 
         const { userID, movieID } = req.query;
-
-
              
         try {
 
