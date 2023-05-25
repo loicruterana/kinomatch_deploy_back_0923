@@ -32,14 +32,6 @@ const bookmarkedController = {
     addBookmarkedMovie: async (req, res) => {
 
         const { id, bookmarked } = req.body;
-
-
-        // const UserID = req.session.users;
-        // const UserID = req.body.UserID;
-
-        // const movieID = req.body.MovieID;
-
-
              
         try {
             const addMovieToBookmarked = await Bookmarked.create({
@@ -57,9 +49,6 @@ const bookmarkedController = {
     deleteBookmarkedMovie: async (req, res) => {
 
         const { id, bookmarked } = req.body;
-        // const UserID = req.session.user;
-        // const UserID = req.body.UserID;
-        // const movieID = req.body.MovieID;
              
         try {
 
