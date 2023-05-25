@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.options('*', cors());
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
