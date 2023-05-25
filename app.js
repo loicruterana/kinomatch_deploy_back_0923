@@ -20,7 +20,7 @@ const corsOptions = {
 };
 
 //Je configure mon app pour faire appel à cors
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
