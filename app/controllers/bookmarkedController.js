@@ -9,7 +9,7 @@ const bookmarkedController = {
     bookmarkedList: async (req, res) => {
 
         const { id, bookmarked } = req.body;
-        // const UserID = req.session.userr;
+        // const UserID = req.session.user;
 
         const bookmarkedList = await Bookmarked.findAll({
             where: {
