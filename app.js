@@ -9,7 +9,7 @@ const app = express();
 const port = 4000;
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Remplacez par l'origine autorisée pour votre application
+  origin: ['http://localhost:5173', 'http://localhost:5173/profile'],// Remplacez par l'origine autorisée pour votre application
   methods: ['GET', 'POST'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
 };
