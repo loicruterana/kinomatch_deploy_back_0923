@@ -1,12 +1,11 @@
+//Je requête dotenv pour pouvoir avoir accès à mes variables d'environnement
 require('dotenv').config();
+//Je requête bcrypt pour pouvoir hasher les mots de passe user
 const bcrypt = require('bcrypt');
-// pour réaliser une création de table avec sequelize
-// on part de notre objet connecté à la bdd
-// un require va executer le code du module ciblé
+//Je requête sequelize pour pouvoir utiliser cet outil lors de la création de ma bdd
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const  { User, Film, Bookmarked }  = require('./app/models');
-// const  Watched  = require('./app/models/watched');
+const  { User, Film, Bookmarked, ToWatch, Watched }  = require('./app/models');
 
 const db = {
   create: async () => {
