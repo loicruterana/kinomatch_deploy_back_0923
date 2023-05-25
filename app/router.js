@@ -42,7 +42,7 @@ router.get('/bookmarkedMovies', bookmarkedController.bookmarkedList);
 //ici j'insère en bdd un film qu'un user ajoute à sa liste "favoris"
 router.post('/bookmarkedMovies', bookmarkedController.addBookmarkedMovie);
 //ici je supprime de la bdd un film qu'un user supprime de sa liste "favoris"
-router.delete('/bookmarkedMovies', bookmarkedController.deleteBookmarkedMovie);
+router.delete('/deletebookmarked', bookmarkedController.deleteBookmarkedMovie);
 
 //routes films vus
 //ici je récupère la liste des films vus d'un user
