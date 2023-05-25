@@ -27,7 +27,6 @@ app.use(express.json());
 
 // Middleware to set the Access-Control-Allow-Origin header
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); 
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
