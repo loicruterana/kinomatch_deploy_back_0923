@@ -14,14 +14,14 @@ const app = express();
 
 //Je configure cors pour ouvrir l'accès
 const corsOptions = {
-  origin: ['*'],// Origines autorisées
+  origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
+  credentials: true, 
 };
 
 //Je configure mon app pour faire appel à cors
-app.use(cors());
-
+app.use(cors(corsOptions));
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
 
