@@ -1,25 +1,26 @@
-//Je requête dotenv
+//Je requête dotenv pour pouvoir avoir accès à mes variables d'environnement
 require('dotenv').config();
+//Je requête express
 const express = require('express');
+//Je requête express-session pour pouvoir créer et gérer des sessions utilisateurs
 const session = require('express-session');
+//Je fais appel à mon routeur
 const router = require('./app/router.js');
+//Je requête cors pour pouvoir donner accès à tous au serveur
 const cors = require('cors');
 
+//J'utilise express pour créer mon app
 const app = express();
 
-const port = 4000;
-
+//Je configure cors pour ouvrir l'accès
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:5173/profile'],// Remplacez par l'origine autorisée pour votre application
+  origin: ['http://localhost:5173', 'http://localhost:5173/profile'],// Origines autorisées
   methods: ['GET', 'POST'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
 };
 
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-
+//Je configure mon app pour faire appel à cors
 app.use(cors(corsOptions));
-app.use(express.static('./public'));
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
 
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// on ajoute le middleware d'express session, qu'on configure
+// j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
@@ -39,24 +40,19 @@ app.use(
   })
 );
 
-// middleware pour l'info logged dans les views
-// ps : on pourrait faire un module à part comme pour checkLogged
+//Je configure mon app pour reconnaître un user connecté en session
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.logged = true;
-    if (req.session.user.role === 'admin') {
-      res.locals.isAdmin = true;
-    } else {
-      res.locals.isAdmin = false;
-    }
   } else {
     res.locals.logged = false;
-    res.locals.isAdmin = false;
   }
   next();
 });
 
+//Je configure mon app pour accéder au routeur
 app.use(router);
 
+//Je branche mon app sur le port que je souhaite utiliser
 app.listen(process.env.PORT || 4000);
   
