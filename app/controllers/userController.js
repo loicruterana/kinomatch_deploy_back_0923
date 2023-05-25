@@ -64,7 +64,7 @@ const userController = {
 
     const { id, email, password, passwordConfirm } = req.query;
 
-    const user = await User.findOne({ where: { id: id }}); 
+    const user = await User.findOne({ where: { id: id.toString() }}); 
                 if (user) { await user.destroy();} // deletes the user
             
     res.status(201).json({ message: 'user deleted', user });
