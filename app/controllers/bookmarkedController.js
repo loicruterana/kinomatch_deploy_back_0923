@@ -10,16 +10,19 @@ const bookmarkedController = {
 
         const { id, bookmarked } = req.body;
         // const UserID = req.session.user;
-
-        const bookmarkedList = await Bookmarked.findAll({
-            where: {
-                user_id: id,
-              },
-            // include: 'bookmarked',       
-        });
-        
-
-        res.json(bookmarkedList);
+        try {
+            const bookmarkedList = await Bookmarked.findAll({
+                where: {
+                    user_id: id,
+                },
+            
+            });
+            res.json(bookmarkedList);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("erreur");
+        }
+            
     },
 
     addBookmarkedMovie: async (req, res) => {
