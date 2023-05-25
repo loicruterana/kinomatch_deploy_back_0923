@@ -8,12 +8,16 @@ const bookmarkedController = {
 
     bookmarkedList: async (req, res) => {
 
-        const { id, bookmarked } = req.body;
-        // const UserID = req.session.user;
+        const { userID } = req.query;
+
         try {
+
+            if(!userID){
+                throw new Error("userID is not defined");
+            }
             const bookmarkedList = await Bookmarked.findAll({
                 where: {
-                    user_id: id,
+                    user_id: userID,
                 },
             
             });
