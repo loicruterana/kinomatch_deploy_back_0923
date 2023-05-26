@@ -50,7 +50,7 @@ router.get('/watchedMovies', watchedController.watchedList);
 //ici j'insère en bdd un film qu'un user ajoute à sa liste "vus"
 router.post('/watchedMovies', watchedController.addWatchedMovie);
 //ici je supprime de la bdd un film qu'un user supprime de sa liste "vus"
-router.delete('/watchedMovies', watchedController.deleteWatchedMovie);
+router.delete('/deleteWatchedMovie', watchedController.deleteWatchedMovie);
 
 //routes films à voir
 //ici je récupère la liste des films à voir d'un user
@@ -58,7 +58,8 @@ router.get('/toWatchMovies', toWatchController.toWatchList);
 //ici j'insère en bdd un film qu'un user ajoute à sa liste "à voir"
 router.post('/toWatchMovies', toWatchController.addToWatchMovie);
 //ici je supprime de la bdd un film qu'un user supprime de sa liste "à voir"
-router.delete('/toWatchMovies', toWatchController.deleteToWatchMovie);
+router.delete('/deleteToWatchMovie', toWatchController.deleteToWatchMovie);
+
 // routes login
 // route de signup
 router.post('/signup', userController.signupAction);

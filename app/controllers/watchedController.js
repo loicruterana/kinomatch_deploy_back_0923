@@ -8,38 +8,37 @@ const watchedController = {
 
     watchedList: async (req, res) => {
 
-        const { id, watched } = req.body;
-        // const UserID = req.session.user;
+        const { userID } = req.query;
 
-        const watchedList = await Watched.findAll({
-            where: {
-                user_id: id,
-              },
-            // include: 'Watched',       
-        });
-        
+        try {
 
-        res.json(watchedList);
+            if(!userID){
+                throw new Error("userID is not defined");
+            }
+            const watchedList = await Watched.findAll({
+                where: {
+                    user_id: userID,
+                },
+            
+            });
+            res.json(watchedList);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("erreur");
+        }
+            
     },
 
     addWatchedMovie: async (req, res) => {
 
         const { id, watched } = req.body;
-
-
-        // const UserID = req.session.users;
-        // const UserID = req.body.UserID;
-
-        // const movieID = req.body.MovieID;
-
-
              
         try {
-            const addMovieWatched = await Watched.create({
+            const addMovieToWatched = await Watched.create({
                 user_id: id,
                 film_id: watched,
         });
-            res.status(201).json({ message: 'Watched created', addMovieWatched });
+            res.status(201).json({ message: 'watched created', addMovieToWatched });
             return;
         } catch (error) {
             console.log(error);
@@ -49,17 +48,14 @@ const watchedController = {
 
     deleteWatchedMovie: async (req, res) => {
 
-        const { id, watched } = req.body;
-        // const UserID = req.session.user;
-        // const UserID = req.body.UserID;
-        // const movieID = req.body.MovieID;
+        const { userID, movieID } = req.query;
              
         try {
 
-            const row = await Watched.findOne({ where: { user_id: id, film_id: watched, }, }); 
+            const row = await Watched.findOne({ where: { user_id: userID, film_id: movieID, }, }); 
             if (row) { await row.destroy();} // deletes the row }
             
-            res.status(201).json({ message: 'Watched deleted', row });
+            res.status(201).json({ message: 'watched deleted', row });
             return;
         } catch (error) {
             console.log(error);
