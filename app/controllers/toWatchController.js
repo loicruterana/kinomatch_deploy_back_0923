@@ -9,6 +9,8 @@ const toWatchController = {
     toWatchList: async (req, res) => {
 
         const { userID } = req.query;
+               
+        console.log(userID);
 
         try {
 
@@ -32,6 +34,8 @@ const toWatchController = {
     addToWatchMovie: async (req, res) => {
 
         const { id, toWatch } = req.body;
+
+        console.log(id, toWatch);
              
         try {
             const addMovieTotoWatch = await ToWatch.create({

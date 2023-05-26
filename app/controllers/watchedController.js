@@ -10,6 +10,8 @@ const watchedController = {
 
         const { userID } = req.query;
 
+        console.log(userID);
+
         try {
 
             if(!userID){
