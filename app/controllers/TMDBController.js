@@ -68,21 +68,22 @@ const TMDBController = {
 
         const response = await TMDB.filterMovie(year1, year2, genreID, providerID);
         const filteredMovies = await response.json();
-        // console.log(filteredMovies.total_pages);
         
-        // let total = filteredMovies.total_pages;
+        console.log(filteredMovies.total_pages);
+        
+        let total = filteredMovies.total_pages;
 
-        // let number = Math.random() * (total - 1) + 1;
-        // let maxNumber = Math.random() * (500 - 1) + 1;
-        // const roundNumber = Math.round(number);
-        // let newNumber;
+        let number = Math.random() * (total - 1) + 1;
+        let maxNumber = Math.random() * (500 - 1) + 1;
+        const roundNumber = Math.round(number);
+        let newNumber;
 
-        // if(roundNumber >= 500){
-        //     newNumber = Math.round(maxNumber)
-        // } else {
-        //     newNumber = roundNumber
-        // }
-        // console.log(newNumber)
+        if(roundNumber >= 500){
+            newNumber = Math.round(maxNumber)
+        } else {
+            newNumber = roundNumber
+        }
+        console.log(newNumber)
           
         res.json(filteredMovies);
         return;
