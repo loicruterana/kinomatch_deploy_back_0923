@@ -89,9 +89,9 @@ const TMDB = {
         let urlGenre = '';
         let urlrandomPage = '';
 
-        if(year1 !== NaN){
+        if(!isNaN(year1)){
             urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`; 
-        } 
+        }
 
         if(providerID !== undefined){
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
