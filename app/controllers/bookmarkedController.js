@@ -33,13 +33,13 @@ const bookmarkedController = {
 
         const { id, bookmarked } = req.body;
             
-        const existingMovie = await Bookmarked.findOne({ where: { user_id: id, film_id: bookmarked, }, });
+        const existingMovie = await Bookmarked.findOne({ where: { user_id: id, film_id: bookmarked }});
             
         if (!existingMovie){
             try {
                 const addMovieToBookmarked = await Bookmarked.create({
-                    user_id: id,
-                    film_id: bookmarked,
+                    user_id: id.isString(),
+                    film_id: bookmarked.isString(),
             });
                 res.status(201).json({ message: 'bookmarked created', addMovieToBookmarked });
                 return;
@@ -60,7 +60,7 @@ const bookmarkedController = {
              
         try {
 
-            const row = await Bookmarked.findOne({ where: { user_id: userID, film_id: movieID, }, }); 
+            const row = await Bookmarked.findOne({ where: { user_id: userID, film_id: movieID } }); 
             if (row) { await row.destroy();} // deletes the row }
             
             res.status(201).json({ message: 'bookmarked deleted', row });
