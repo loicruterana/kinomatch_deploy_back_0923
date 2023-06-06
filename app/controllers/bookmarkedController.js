@@ -32,18 +32,26 @@ const bookmarkedController = {
     addBookmarkedMovie: async (req, res) => {
 
         const { id, bookmarked } = req.body;
-             
-        try {
-            const addMovieToBookmarked = await Bookmarked.create({
-                user_id: id,
-                film_id: bookmarked,
-        });
-            res.status(201).json({ message: 'bookmarked created', addMovieToBookmarked });
-            return;
-        } catch (error) {
-            console.log(error);
-            res.status(500);
+            
+        const existingMovie = await Bookmarked.findOne({ where: { user_id: id, film_id: bookmarked, }, });
+            
+        if (!existingMovie){
+            try {
+                const addMovieToBookmarked = await Bookmarked.create({
+                    user_id: id,
+                    film_id: bookmarked,
+            });
+                res.status(201).json({ message: 'bookmarked created', addMovieToBookmarked });
+                return;
+            } catch (error) {
+                console.log(error);
+                res.status(500);
+            }
+        } else {
+            res.status(201).json({ message: 'bookmarked already created' });
+
         }
+        
     },
 
     deleteBookmarkedMovie: async (req, res) => {
