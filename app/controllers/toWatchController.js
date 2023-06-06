@@ -35,27 +35,18 @@ const toWatchController = {
 
         const { id, toWatch } = req.body;
 
-        // console.log(id, toWatch);
+        console.log(id, toWatch);
              
-       
-
-        const existingMovie = await ToWatch.findOne({ where: { user_id: id, film_id: toWatch, }, });
-            
-        if (!existingMovie){
-            try {
-                const addMovieTotoWatch = await ToWatch.create({
-                    user_id: id,
-                    film_id: toWatch,
-            });
-                res.status(201).json({ message: 'toWatch created', addMovieTotoWatch });
-                return;
-            } catch (error) {
-                console.log(error);
-                res.status(500);
-            }
-        } else {
-            res.status(201).json({ message: 'toWatch already created' });
-
+        try {
+            const addMovieTotoWatch = await ToWatch.create({
+                user_id: id,
+                film_id: toWatch,
+        });
+            res.status(201).json({ message: 'toWatch created', addMovieTotoWatch });
+            return;
+        } catch (error) {
+            console.log(error);
+            res.status(500);
         }
     },
 
