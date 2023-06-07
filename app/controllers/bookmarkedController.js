@@ -45,9 +45,9 @@ const bookmarkedController = {
         //     res.status(500);
         // }
 
-        const { id, bookmarked } = req.query;
+        const { id, bookmarked } = req.body;
             
-        const existingMovie = await Bookmarked.findOne({ where: { user_id: id, film_id: bookmarked }});
+        const existingMovie = await Bookmarked.findOne({ where: { user_id: id.toString(), film_id: bookmarked.toString() }});
 
         console.log(existingMovie);
             
