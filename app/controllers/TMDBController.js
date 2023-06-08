@@ -19,6 +19,15 @@ const TMDBController = {
         return;
     },
 
+    getRecommendedMovies: async (req, res) => {
+        const movieID = req.query.movieID;
+        const response = await TMDB.getRecommendedMovies(movieID);
+        const recommendedMovies = await response.json();
+        res.json(recommendedMovies);  
+        return;
+    },
+
+
     getMovieProvider: async (req, res) => {
         const movieID = req.query.movieID;
         const response = await TMDB.getMovieProvider(movieID);

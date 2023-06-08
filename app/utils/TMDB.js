@@ -28,6 +28,11 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}/credits?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
+    getRecommendedMovies: async (movieID) => {
+
+        return fetch(`${TMDB.API_URL}/movie/${movieID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`)
+    },
+
     getPeopleId: async (typedName) => {
 
         return fetch(`${TMDB.API_URL}/search/person?api_key=${TMDB.API_KEY}&query=${typedName}`)
