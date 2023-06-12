@@ -12,27 +12,21 @@ const cors = require('cors');
 //J'utilise express pour créer mon app
 const app = express();
 
-//Je configure cors pour ouvrir l'accès
-// const corsOptions = {
-//   origin: ['http://localhost:5173'],// Origines autorisées
-//   methods: ['GET', 'POST'], // Méthodes HTTP autorisées
-//   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
-//   credentials: true, 
-// };
+// Je configure cors pour ouvrir l'accès
+const corsOptions = {
+  origin: ['https://kinotest-wzyp92eao-kinomatch.vercel.app/'],// Origines autorisées
+  methods: ['GET', 'POST'], // Méthodes HTTP autorisées
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
+  credentials: true, 
+};
 
 //Je configure mon app pour faire appel à cors
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(express.urlencoded( {extended : true}));
 app.use(express.json());
 
-// // Middleware to set the Access-Control-Allow-Origin header
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Request-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//   next();
-// });
 
-app.options('*', cors());
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
