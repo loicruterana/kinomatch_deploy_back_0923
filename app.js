@@ -17,7 +17,7 @@ const corsOptions = {
   origin: ['https://projet-06-kinomatch-front.vercel.app/'],// Origines autorisées
   methods: ['GET', 'POST'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
-  credentials: false, 
+  credentials: true, 
 };
 
 //Je configure mon app pour faire appel à cors
@@ -36,7 +36,7 @@ app.use(
     cookie: { secure: false },
     sameSite: 'none',
     secure: false,
-    httpOnly: false, // en production il faudra utiliser HTTPS
+    httpsOnly: false, // en production il faudra utiliser HTTPS
   })
 );
 
