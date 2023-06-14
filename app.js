@@ -23,7 +23,10 @@ const corsOptions = {
 //Je configure mon app pour faire appel à cors
 app.use(cors(corsOptions));
 
+//Je configure mon app pour pouvoir accéder aux données envoyées par le front
 app.use(express.urlencoded( {extended : true}));
+
+//Je configure mon app pour pouvoir accéder aux données envoyées en json
 app.use(express.json());
 
 

@@ -7,13 +7,17 @@ const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
 const  { User, Film, Bookmarked, ToWatch, Watched }  = require('./app/models');
 
+// Je crée un objet db qui permet de créer la bdd et de la remplir
 const db = {
+  // on crée une fonction create qui va créer la bdd
   create: async () => {
     try {
     
         console.log(User);
 
+      // on supprime les tables si elles existent déjà
       await sequelize.drop();
+      // on crée les tables
       await sequelize.sync();
       // seulement après avoir crée les tables, je peux mettre des choses dedans
       db.seeding();
@@ -22,22 +26,13 @@ const db = {
       console.log(error);
     }
   },
+  // on crée une fonction seeding qui va remplir la bdd avec un user et un film par défaut
   seeding: async () => {
     try {
       const defaultPassword = await bcrypt.hash('kinopw', 10);
       
       const member = await User.create({
         email: 'kino@mail.io',
-        password: defaultPassword,
-      });
-
-      const member2 = await User.create({
-        email: 'kokiri@mail.io',
-        password: defaultPassword,
-      });
-
-      const member3 = await User.create({
-        email: 'gerudo@mail.io',
         password: defaultPassword,
       });
 

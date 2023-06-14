@@ -1,10 +1,7 @@
-// const { Sequelize } = require('sequelize');
-
-// const sequelize = new Sequelize(process.env.PG_URL, { define: {
-//   underscored: true,
-// }});
-const pg = require('pg');
+// ici je require le package sequelize
 const Sequelize = require('sequelize');
+
+// ici je crée une instance sequelize qui se connecte à ma bdd
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   // dialectModule: pg,  
   dialectOptions: {
@@ -16,6 +13,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   }
 );
 
+// ici j'établis la connexion à la bdd heroku
 sequelize
   .authenticate()
   .then(() => {
@@ -25,4 +23,5 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
+//
 module.exports = sequelize;

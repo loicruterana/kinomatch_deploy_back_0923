@@ -1,20 +1,16 @@
 // on require le package express
 const express = require('express');
 
-const mainController = require('./controllers/mainController.js');
+// on require les controllers
 const userController = require('./controllers/userController');
 const TMDBController = require('./controllers/TMDBController.js');
 const bookmarkedController = require('./controllers/bookmarkedController.js');
 const watchedController = require('./controllers/watchedController.js');
 const toWatchController = require('./controllers/toWatchController.js');
 const movieController = require('./controllers/movieController.js');
-const checkLogged = require('./middlewares/checkLogged');
 
 // on crée notre routeur
 const router = express.Router();
-
-
-router.get('/', mainController.getHomePage);
 
 //ici je récupère la liste des genres tmdb
 router.get('/genres', TMDBController.getGenresList);
@@ -28,13 +24,14 @@ router.get('/credits', TMDBController.getMovieCredits);
 router.get('/recommendedMovies', TMDBController.getRecommendedMovies);
 //ici je récupère la plateforme où un film est dispo depuis son tmdbID
 router.get('/provider', TMDBController.getMovieProvider);
+// ici je cherche un film en fonction du nom tapé dans la barre de recherche
+router.get('/search', TMDBController.searchMovie);
 //ici je sélectionne des films en fonction des filtres de la home
 router.get('/films', TMDBController.filterMovie);
 //ici je sélectionne des films en fonction des filtres de la home
 router.get('/randomFilms', TMDBController.filterRandomMovie);
 //ici je sélectionne des films en fonction de de nouveaux filtres de la home
 router.get('/filmsAdvanced', TMDBController.filterMovieAdvanced);
-
 //ici j'insère un film dans ma bdd depuis TMDB
 router.post('/addMovie', movieController.checkMovie);
 
@@ -72,4 +69,5 @@ router.get('/logout', userController.logout);
 // route de suppression de compte
 router.delete('/deleteAccount', userController.deleteAccount);
 
+// on exporte le routeur
 module.exports = router
