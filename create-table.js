@@ -12,9 +12,6 @@ const db = {
   // on crée une fonction create qui va créer la bdd
   create: async () => {
     try {
-    
-        console.log(User);
-
       // on supprime les tables si elles existent déjà
       await sequelize.drop();
       // on crée les tables

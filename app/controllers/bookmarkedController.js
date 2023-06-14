@@ -30,8 +30,6 @@ const bookmarkedController = {
         const { id, bookmarked } = req.body;
         // je définis la variable existingMovie qui récupère le film favoris de l'utilisateur
         const existingMovie = await Bookmarked.findOne({ where: { user_id: id.toString(), film_id: bookmarked.toString() }});
-
-        console.log(existingMovie);
         // je vérifie si le film n'est pas déjà favoris de l'utilisateur
         if (!existingMovie){
             try {

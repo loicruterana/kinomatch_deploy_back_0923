@@ -86,7 +86,6 @@ const userController = {
     // Je définis la variable userID qui récupère l'id de l'utilisateur via la query
     const { userID } = req.query;
 
-    console.log(userID);
     // Je crée une variable user qui cherche un utilisateur dans la base de données avec l'id récupéré via la query
     const user = await User.findOne({ where: { id: userID }});
                 // Je crée la condition qui stipule que si l'utilisateur existe, il est supprimé 

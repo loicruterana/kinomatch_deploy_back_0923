@@ -9,8 +9,6 @@ const watchedController = {
         // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
         const { userID } = req.query;
 
-        console.log(userID);
-
         try {
             // je crée la condition qui stipule que si l'id de l'utilisateur n'est pas défini, une erreur est renvoyée
             if(!userID){
@@ -52,7 +50,6 @@ const watchedController = {
                 // Je retourne la fonction
                 return;
             } catch (error) {
-                console.log(error);
                 res.status(500);
             }
         } else {
@@ -76,7 +73,6 @@ const watchedController = {
             // Je retourne la fonction
             return;
         } catch (error) {
-            console.log(error);
             res.status(500);
         }
     },

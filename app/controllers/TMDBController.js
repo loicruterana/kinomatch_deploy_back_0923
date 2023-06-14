@@ -57,7 +57,6 @@ const TMDBController = {
         const response = await TMDB.getGenresList();
         // je transforme la liste des genres de films en objet json
         const genresList = await response.json();
-        console.log(genresList);
         // j'envoie la liste des genres de films dans un nouveau fichier json
         res.json(genresList);  
         return;
@@ -69,7 +68,6 @@ const TMDBController = {
         // je transforme la liste des plateformes de streaming en objet json
         const providersList = await response.json();
         // j'envoie la liste des plateformes de streaming dans un nouveau fichier json
-        console.log(providersList);
         res.json(providersList);  
         return;
     },
@@ -163,9 +161,6 @@ const TMDBController = {
         // const runtime = req.query.runtime; (ex : )
         // const runtime2 = Number(runtime);
         // const runtime1 = Number(runtime) - 30;
-    
-        console.log(castID);
-        console.log(countryID);
 
         // je définis la variable response qui envoie les paramètres à la méthode filterMovieAdvanced du fichier TMDB.js
         const response = await TMDB.filterMovieAdvanced(year1, year2, genreID, providerID, countryID, castID);

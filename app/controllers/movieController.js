@@ -20,7 +20,6 @@ const movieController = {
             const addMovie = await Film.create({
                 codeTMDB: movieID
             });
-            console.log("movieAdded!");
             // je renvoie un message de confirmation
             res.status(201).json({ message: 'movie added', addMovie });
             return;

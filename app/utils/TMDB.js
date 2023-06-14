@@ -51,16 +51,11 @@ const TMDB = {
 
     // Je crée une méthode searchMovie qui appelle l'API TMDB pour récupérer les films en fonction du nom tapé dans la barre de recherche
     searchMovie: async (typedName) => {
-            console.log(typedName);
             return fetch(`${TMDB.API_URL}/search/movie?api_key=${TMDB.API_KEY}&language=fr-FR&query=${typedName}`)
     },
 
     // Je crée une méthode filterMovie qui appelle l'API TMDB pour récupérer les films filtrés en fonction de l'année, du genre et de la plateforme
     filterMovie: async (year1, year2, genreID, providerID) => {
-
-        console.log(year1);
-        console.log(providerID);
-        console.log(genreID);
 
         let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
         let urlDecade = '';
@@ -79,7 +74,6 @@ const TMDB = {
         if(providerID !== undefined){
             if(providerID.constructor === Array){
                 let newArr = providerID.join(',').replace(/,/g, '|').split();
-                console.log(newArr);
                 providerID = newArr;
             }
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
@@ -93,18 +87,12 @@ const TMDB = {
     
         
         const fullUrl = baseUrl + urlDecade + urlProvider + urlGenre;
-        console.log(fullUrl)
         return fetch(fullUrl)
     
     },
 
     // Je crée la même méthode que filterMovie mais avec un paramètre randomPage en plus pour pouvoir faire un appel à l'API TMDB avec une page aléatoire
     filterRandomMovie: async (year1, year2, genreID, providerID, randomPage) => {
-
-        console.log(year1);
-        console.log(providerID);
-        console.log(genreID);
-        console.log(randomPage);
 
         let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false`;
         let urlDecade = '';
@@ -119,7 +107,6 @@ const TMDB = {
         if(providerID !== undefined){
             if(providerID.constructor === Array){
                 let newArr = providerID.join(',').replace(/,/g, '|').split();
-                console.log(newArr);
                 providerID = newArr;
             }
             urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
@@ -134,7 +121,6 @@ const TMDB = {
         }
         
         const fullUrl = baseUrl + urlDecade + urlProvider + urlGenre + urlrandomPage;
-        console.log(fullUrl)
         return fetch(fullUrl)
     
     },
@@ -142,12 +128,6 @@ const TMDB = {
     // Je crée une méthode filterMovieAdvanced qui appelle l'API TMDB pour récupérer les films filtrés en fonction de l'année, du genre, de la plateforme, du pays et du casting
     filterMovieAdvanced: async (year1, year2, genreID, providerID, countryID, castID) => {
 
-        console.log(year1);
-        console.log(providerID);
-        console.log(genreID);
-        console.log(countryID);
-        console.log(castID);
-        console.log('helloworld');
 
         let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${TMDB.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
         let urlDecade = '';
@@ -181,7 +161,6 @@ const TMDB = {
     
         
         const fullUrl = baseUrl + urlDecade + urlProvider + urlGenre + urlCountry + urlCast;
-        console.log(fullUrl)
         return fetch(fullUrl)
     
     },

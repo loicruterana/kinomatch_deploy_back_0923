@@ -8,9 +8,7 @@ const toWatchController = {
     toWatchList: async (req, res) => {
         // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
         const { userID } = req.query;
-               
-        console.log(userID);
-        
+                       
         try {
             // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
             if(!userID){
@@ -35,7 +33,6 @@ const toWatchController = {
         // Je définis la variable id qui récupère l'id de l'utilisateur et son film à regarder via le body
         const { id, toWatch } = req.body;
 
-        console.log(id, toWatch);
         // je définis la variable existingMovie qui va vérifier si le film à regarder n'est pas déjà présent dans la bdd
         const existingMovie = await ToWatch.findOne({ where: { user_id: id.toString(), film_id: toWatch.toString() }});
         // je stipule que si le film à regarder n'est pas présent dans la bdd, alors je l'ajoute
