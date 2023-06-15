@@ -87,8 +87,10 @@ const TMDBController = {
     searchMovie: async (req, res) => {
         // je définis la variable typedName qui récupère le nom du film via la query string
         const typedName = req.query.typedName;
+        // je définis la variable page qui récupère le numéro de la page via la query string
+        const page = req.query.page;
         // je définis la variable response qui envoie le nom du film à la méthode searchMovie du fichier TMDB.js
-        const response = await TMDB.searchMovie(typedName);
+        const response = await TMDB.searchMovie(typedName, page);
         // je récupère les films correspondant à la recherche dans un objet json
         const searchedMovies = await response.json();
         // j'envoie les films correspondant à la recherche dans un nouveau fichier json
