@@ -51,6 +51,8 @@ const TMDB = {
 
     // Je crée une méthode searchMovie qui appelle l'API TMDB pour récupérer les films en fonction du nom tapé dans la barre de recherche
     searchMovie: async (typedName) => {
+
+            console.log(typedName)
             return fetch(`${TMDB.API_URL}/search/movie?api_key=${TMDB.API_KEY}&language=fr-FR&query=${typedName}`)
     },
 
