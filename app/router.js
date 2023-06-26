@@ -20,7 +20,7 @@ router.get('/providers', TMDBController.getProvidersList);
 router.get('/detail', TMDBController.getMovieDetails);
 //ici je récupère le cast&crew d'un film depuis son tmdbID
 router.get('/credits', TMDBController.getMovieCredits);
-//ici je récupère les films similaire à un film depuis son tmdbID
+//ici je récupère les films similaires à un film depuis son tmdbID
 router.get('/recommendedMovies', TMDBController.getRecommendedMovies);
 //ici je récupère la plateforme où un film est dispo depuis son tmdbID
 router.get('/provider', TMDBController.getMovieProvider);

@@ -64,11 +64,13 @@ const userController = {
       const isPasswordValid = await bcrypt.compare(password, user.password);
       // Je crée la condition qui stipule que si le mot de passe n'est pas celui du user, une erreur est renvoyée avec le message "Email ou mot de passe invalide"
       if (!isPasswordValid) {
-        req.session.user = user;
         return res.status(400).json({ error: 'Email ou mot de passe invalide' });
+      } else if(isPasswordValid){
+        // Je stocke l'utilisateur en session
+        req.session.user = user;
+         // Stockez l'utilisateur en session ici si vous utilisez des sessions
+        return res.status(200).json({ message: 'Utilisateur connecté', user });
       }
-      // Stockez l'utilisateur en session ici si vous utilisez des sessions
-      return res.status(200).json({ message: 'Utilisateur connecté', user });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erreur lors de la connexion de l\'utilisateur' });
