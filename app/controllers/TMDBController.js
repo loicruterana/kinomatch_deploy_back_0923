@@ -7,6 +7,7 @@ const TMDBController = {
     getMovieDetails: async (req, res) => {
         // je définis la variable movieID qui récupère l'id du film via la query string
         const movieID = req.query.movieID;
+        console.log(movieID);
         // je définis la variable response qui envoie le movieID à la méthode getMovieDetails du fichier TMDB.js
         const response = await TMDB.getMovieDetails(movieID);
         // je récupère les détails du film dans un objet json
