@@ -24,12 +24,12 @@ User.init({
     // je définis que l'attribut password ne peut pas être null
     allowNull: false,
   },
-  picture: {
+  // picture: {
     // je définis le type de l'attribut picture
-    type: DataTypes.INTEGER,
+    // type: DataTypes.INTEGER,
     // je définis que l'attribut picture peut être null
-    allowNull: true,
-  },
+  //   allowNull: true,
+  // },
 }, {
   // je définis que le modèle doit utiliser la connexion à la base de données
   sequelize,
