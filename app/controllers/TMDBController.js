@@ -40,6 +40,19 @@ const TMDBController = {
         res.json(recommendedMovies);  
         return;
     },
+     getRecommendedMoviesSecondPage: async (req, res) => {
+        // je définis la variable movieID qui récupère l'id du film via la query string
+        const movieID = req.query.movieID;
+        // je définis la variable page qui récupère le numéro de la page via la query string
+        const page = req.query.page;
+        // je définis la variable response qui envoie le movieID à la méthode getRecommendedMovies du fichier TMDB.js
+        const response = await TMDB.getRecommendedMoviesSecondPage(movieID, page);
+        // je récupère les films recommandés dans un objet json
+        const recommendedMovies = await response.json();
+        // j'envoie les films recommandés dans un nouveau fichier json
+        res.json(recommendedMovies);  
+        return;
+    },
     // je définis la méthode getMovieProvider qui permet de récupérer les plateformes de streaming d'un film depuis son tmdbID
     getMovieProvider: async (req, res) => {
         // je définis la variable movieID qui récupère l'id du film via la query string

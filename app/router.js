@@ -22,6 +22,8 @@ router.get('/detail', TMDBController.getMovieDetails);
 router.get('/credits', TMDBController.getMovieCredits);
 //ici je récupère les films similaires à un film depuis son tmdbID
 router.get('/recommendedMovies', TMDBController.getRecommendedMovies);
+//ici je récupère les films similaires à un film depuis son tmdbID
+router.get('/recommendedMoviesSecondPage', TMDBController.getRecommendedMoviesSecondPage);
 //ici je récupère la plateforme où un film est dispo depuis son tmdbID
 router.get('/provider', TMDBController.getMovieProvider);
 // ici je cherche un film en fonction du nom tapé dans la barre de recherche

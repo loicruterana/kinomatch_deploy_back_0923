@@ -42,6 +42,19 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
+     getRecommendedMoviesSecondPage: async (movieID, page) => {
+
+        let baseUrl = `${TMDB.API_URL}/movie/${movieID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`;
+        let urlPage = '';
+
+        if(page !== undefined){
+            urlPage = `&page=${page}`;
+        }
+
+        const fullUrl = baseUrl + urlPage;
+        return fetch(fullUrl)
+    },
+
     // Je crée une méthode getPeopleID qui appelle l'API TMDB pour récupérer l'ID d'une personne en vue de les afficher sur la home
     getPeopleId: async (typedName) => {
 
