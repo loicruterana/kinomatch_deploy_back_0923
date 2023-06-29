@@ -42,9 +42,9 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
-     getRecommendedMoviesSecondPage: async (movieID, page) => {
+     getRecommendedMoviesSecondPage: async (filmID, page) => {
 
-        let baseUrl = `${TMDB.API_URL}/movie/${movieID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`;
+        let baseUrl = `${TMDB.API_URL}/movie/${filmID}/recommendations?api_key=${TMDB.API_KEY}&language=fr-FR`;
         let urlPage = '';
 
         if(page !== undefined){
