@@ -36,6 +36,13 @@ const TMDB = {
         return fetch(`${TMDB.API_URL}/movie/${movieID}/credits?api_key=${TMDB.API_KEY}&language=fr-FR`)
     },
 
+    // Je crée une méthode getMovieImages qui appelle l'API TMDB pour récupérer les images d'un film en vue de les afficher sur la page du film
+    getMovieImages: async (movieID) => {
+        
+        console.log(movieID);
+        return fetch(`${TMDB.API_URL}/movie/${movieID}/images?api_key=${TMDB.API_KEY}`);
+    },
+
     // Je crée une méthode getRecommendedMovies qui appelle l'API TMDB pour récupérer les films recommandés en vue de les afficher sur la page du film
     getRecommendedMovies: async (movieID) => {
 

@@ -26,6 +26,8 @@ router.get('/recommendedMovies', TMDBController.getRecommendedMovies);
 router.get('/recommendedMoviesSecondPage', TMDBController.getRecommendedMoviesSecondPage);
 //ici je récupère la plateforme où un film est dispo depuis son tmdbID
 router.get('/provider', TMDBController.getMovieProvider);
+//ici je récupère les images d'un film depuis son tmdbID
+router.get('/images', TMDBController.getMovieImages);
 // ici je cherche un film en fonction du nom tapé dans la barre de recherche
 router.get('/search', TMDBController.searchMovie);
 //ici je sélectionne des films en fonction des filtres de la home

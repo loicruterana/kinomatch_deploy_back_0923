@@ -66,6 +66,18 @@ const TMDBController = {
         res.json(provider);  
         return;
     },
+    getMovieImages: async (req, res) => {
+        // je définis la variable movieID qui récupère l'id du film via la query string
+        const movieID = req.query.movieID;
+        console.log(movieID);
+        // je définis la variable response qui envoie le movieID à la méthode getMovieImages du fichier TMDB.js
+        const response = await TMDB.getMovieImages(movieID);
+        // je récupère les images du film dans un objet json
+        const images = await response.json();
+        // j'envoie les images du film dans un nouveau fichier json
+        res.json(images);
+        return;
+    },
     // je définis la méthode getGenresList qui récupère la liste des genres de films depuis la méthode getGenresList du fichier TMDB.js
     getGenresList: async (req, res) => {
         // je définis la variable response qui récupère la méthode getGenresList du fichier TMDB.js
