@@ -44,7 +44,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: { 
-      expires: 60 * 60 * 24, // durée de vie du cookie en secondes (ici 1 jour) 
+      secure: false  
     },
   })
 );
