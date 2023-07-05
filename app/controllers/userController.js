@@ -68,14 +68,13 @@ const userController = {
       } else if(isPasswordValid){
         // Je stocke l'utilisateur en session
         req.session.user = user;
-
+        console.log("le cookies de la session", req.session.cookie)
         console.log("le user en session : ", req.session.user);
         console.log("les headers en session : ", req.headers)
         res.cookie('userToken', user.id, { maxAge: 24 * 60 * 60 * 1000
           // , 
           // httpOnly: false 
         });
-
          // Stockez l'utilisateur en session ici si vous utilisez des sessions
         return res.status(200).json({ message: 'Utilisateur connecté', user });
       }

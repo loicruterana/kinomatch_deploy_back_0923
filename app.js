@@ -42,7 +42,7 @@ app.use(
     key: "userId", // le nom du cookie
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { 
       secure: true
     },
