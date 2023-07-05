@@ -8,7 +8,10 @@ const session = require('express-session');
 const router = require('./app/router.js');
 //Je requête cors pour pouvoir donner accès à tous au serveur
 const cors = require('cors');
-
+//Je requête body-parser pour pouvoir accéder aux données envoyées par le front
+const bodyParser = require('body-parser');
+//Je requête cookie-parser pour pouvoir gérer les cookies
+const cookieParser = require('cookie-parser')
 //J'utilise express pour créer mon app
 const app = express();
 
@@ -19,6 +22,9 @@ const corsOptions = {
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
   credentials: true, 
 };
+
+//Je configure mon app pour utiliser le dossier public
+app.use(cookieParser());
 
 //Je configure mon app pour faire appel à cors
 app.use(cors(corsOptions));
@@ -33,13 +39,13 @@ app.use(express.json());
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
+    key: process.env.COOKIE_NAME, // le nom du cookie
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
-    sameSite: 'none',
-    secure: false,
-    httpsOnly: false, // en production il faudra utiliser HTTPS
+    cookie: { 
+      expires: 60 * 60 * 24, // durée de vie du cookie en secondes (ici 1 jour) 
+    },
   })
 );
 

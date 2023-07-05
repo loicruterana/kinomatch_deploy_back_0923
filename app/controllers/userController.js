@@ -68,6 +68,8 @@ const userController = {
       } else if(isPasswordValid){
         // Je stocke l'utilisateur en session
         req.session.user = user;
+
+        console.log(req.session.user);
          // Stockez l'utilisateur en session ici si vous utilisez des sessions
         return res.status(200).json({ message: 'Utilisateur connecté', user });
       }
