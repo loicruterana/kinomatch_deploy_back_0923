@@ -39,7 +39,7 @@ app.use(express.json());
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
-    key: process.env.COOKIE_NAME, // le nom du cookie
+    key: "userId", // le nom du cookie
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
     saveUninitialized: false,
