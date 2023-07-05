@@ -42,22 +42,12 @@ app.use(
     key: "userId", // le nom du cookie
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { 
       secure: false  
     },
   })
 );
-
-//Je configure mon app pour reconnaître un user connecté en session
-app.use((req, res, next) => {
-  if (req.session.user) {
-    res.locals.logged = true;
-  } else {
-    res.locals.logged = false;
-  }
-  next();
-});
 
 //Je configure mon app pour accéder au routeur
 app.use(router);
