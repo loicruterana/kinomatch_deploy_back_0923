@@ -8,6 +8,7 @@ const bookmarkedController = require('./controllers/bookmarkedController.js');
 const watchedController = require('./controllers/watchedController.js');
 const toWatchController = require('./controllers/toWatchController.js');
 const movieController = require('./controllers/movieController.js');
+const checkLogged = require('./middlewares/checkLogged');
 
 // on crée notre routeur
 const router = express.Router();
