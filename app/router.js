@@ -70,6 +70,8 @@ router.delete('/deleteToWatchMovie', toWatchController.deleteToWatchMovie);
 router.post('/signup', userController.signupAction);
 // route de connection
 router.post('/login', userController.loginAction);
+// route de vérification de connection
+router.get('/login', userController.checkLogin);
 // route de déconnection
 router.get('/logout', userController.logout);
 // route de suppression de compte

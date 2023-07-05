@@ -78,6 +78,14 @@ const userController = {
       return res.status(500).json({ error: 'Erreur lors de la connexion de l\'utilisateur' });
     }
   },
+
+  checkLogin: function(req, res) {
+      if (req.session.user) {
+          res.send({loggedIn: true, user: req.session.user})
+        } else { 
+          res.send({loggedIn: false})}
+  },
+
   // Je définis la méthode logoutAction qui permet à un utilisateur de se déconnecter
   logout: function(req, res) {
     // Je supprime l'utilisateur de la session
