@@ -70,9 +70,10 @@ const userController = {
         req.session.user = user;
 
         console.log(req.session.user);
+        console.log(req.headers)
         res.cookie('userToken', user.id, { maxAge: 24 * 60 * 60 * 1000
-          , 
-          httpOnly: false 
+          // , 
+          // httpOnly: false 
         });
 
          // Stockez l'utilisateur en session ici si vous utilisez des sessions
