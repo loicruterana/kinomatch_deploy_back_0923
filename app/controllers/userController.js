@@ -71,7 +71,7 @@ const userController = {
 
         console.log(req.session.user);
          // Stockez l'utilisateur en session ici si vous utilisez des sessions
-        return res.status(200).json({ message: 'Utilisateur connecté', user });
+        return res.send(user);
       }
     } catch (error) {
       console.error(error);
