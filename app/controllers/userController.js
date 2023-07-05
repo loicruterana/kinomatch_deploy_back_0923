@@ -71,7 +71,7 @@ const userController = {
 
         console.log(req.session.user);
          // Stockez l'utilisateur en session ici si vous utilisez des sessions
-        return res.send(user);
+        return res.status(200).json({ message: 'Utilisateur connecté', user });
       }
     } catch (error) {
       console.error(error);
@@ -80,10 +80,15 @@ const userController = {
   },
 
   checkLogin: function(req, res) {
+    try {
       if (req.session.user) {
-          res.send({loggedIn: true, user: req.session.user})
+          return res.status(200).json({ loggedIn: true, user: req.session.user })
         } else { 
-          res.send({loggedIn: false})}
+          return res.status(200).json({ loggedIn: false })}
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Erreur lors de la vérification de l\'utilisateur' });
+    }
   },
 
   // Je définis la méthode logoutAction qui permet à un utilisateur de se déconnecter
