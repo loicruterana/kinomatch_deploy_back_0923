@@ -17,7 +17,7 @@ const app = express();
 
 // Je configure cors pour ouvrir l'accès
 const corsOptions = {
-  origin: ['https://projet-06-kinomatch-front.vercel.app/', 'http://localhost:5173'],// Origines autorisées
+  origin: ['https://projet-06-kinomatch-front.vercel.app', 'http://localhost:5173'],// Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
@@ -45,6 +45,7 @@ app.use(
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
     saveUninitialized: false,
+    domain: "http://localhost:5173",
     cookie: { 
       sameSite: 'none',
       secure: true,
