@@ -17,7 +17,8 @@ const app = express();
 
 // Je configure cors pour ouvrir l'accès
 const corsOptions = {
-  origin: ['http://localhost:5173'],// Origines autorisées
+  origin: ['https://projet-06-kinomatch-front.vercel.app/', 'http://localhost:5173'],// Origines autorisées
+  // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
   credentials: true, 
@@ -35,7 +36,8 @@ app.use(cors(corsOptions));
 //Je configure mon app pour pouvoir accéder aux données envoyées en json
 app.use(express.json());
 
-
+// 
+app.set("trust proxy", 1);
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
@@ -50,18 +52,6 @@ app.use(
     },
   })
 );
-
-app.use(session({
-  secret: 'votre-clé-secrete',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: true, // Utilisez true si vous utilisez HTTPS, false pour le développement en local
-    httpOnly: true,
-    maxAge: 3600000, // Durée de validité du cookie en millisecondes
-  },
-}));
-
 
 //Je configure mon app pour accéder au routeur
 app.use(router);
