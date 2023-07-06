@@ -17,7 +17,7 @@ const app = express();
 
 // Je configure cors pour ouvrir l'accès
 const corsOptions = {
-  origin: ['https://projet-06-kinomatch-front.vercel.app', 'http://localhost:5173'],// Origines autorisées
+  origin: ['https://projet-06-kinomatch-front.vercel.app', 'http://localhost:5173', 'https://deploy-back-kinomatch.herokuapp.com/'],// Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // En-têtes autorisés
