@@ -45,10 +45,10 @@ app.use(
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app pour des id de session non prédictibles
     resave: false,
     saveUninitialized: false,
-    domain: "http://localhost:5173",
     cookie: { 
       sameSite: 'none',
       secure: true,
+      domain: "http://localhost:5173",
       httpsOnly: true 
     },
   })
