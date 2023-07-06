@@ -30,14 +30,11 @@ app.use(cookieParser());
 //Je configure mon app pour accéder aux données envoyées par le front
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Je configure mon app pour faire appel à cors
-app.use(cors(corsOptions));
 
 //Je configure mon app pour pouvoir accéder aux données envoyées en json
 app.use(express.json());
 
-// 
-app.set("trust proxy", 1);
+
 // j'ajoute le middleware d'express session, qu'on configure
 app.use(
   session({
@@ -53,6 +50,13 @@ app.use(
     },
   })
 );
+
+// 
+app.enable('trust proxy');
+
+
+//Je configure mon app pour faire appel à cors
+app.use(cors(corsOptions));
 
 //Je configure mon app pour accéder au routeur
 app.use(router);
