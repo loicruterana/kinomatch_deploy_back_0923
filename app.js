@@ -49,7 +49,7 @@ app.use(
       sameSite: 'none',
       secure: true,
       domain: "http://localhost:5173",
-      httpsOnly: true 
+      httpOnly: true 
     },
   })
 );
