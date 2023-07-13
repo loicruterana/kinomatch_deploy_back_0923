@@ -5,7 +5,12 @@ const bcrypt = require('bcrypt');
 //Je requête sequelize pour pouvoir utiliser cet outil lors de la création de ma bdd
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const  { User, Film, Bookmarked, ToWatch, Watched }  = require('./app/models');
+const { User, Film, Bookmarked, ToWatch, Watched } = require('./app/models');
+// const { User } = require('./app/models/user.js');
+// const { Film } = require('./app/models/film.js');
+// const { Bookmarked } = require('./app/models/bookmarked.js');
+// const { ToWatch } = require('./app/models/toWatch.js');
+// const { Watched } = require('./app/models/user.js');
 
 // Je crée un objet db qui permet de créer la bdd et de la remplir
 const db = {
@@ -18,8 +23,7 @@ const db = {
       await sequelize.sync();
       // seulement après avoir crée les tables, je peux mettre des choses dedans
       db.seeding();
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   },
@@ -27,18 +31,16 @@ const db = {
   seeding: async () => {
     try {
       const defaultPassword = await bcrypt.hash('kinopw', 10);
-      
+
       const member = await User.create({
         email: 'kino@mail.io',
         password: defaultPassword,
       });
 
       const film79 = await Film.create({
-        codeTMDB: 79    
+        codeTMDB: 79,
       });
-     
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   },

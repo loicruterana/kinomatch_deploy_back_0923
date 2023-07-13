@@ -23,7 +23,10 @@ router.get('/credits', TMDBController.getMovieCredits);
 //ici je récupère les films similaires à un film depuis son tmdbID
 router.get('/recommendedMovies', TMDBController.getRecommendedMovies);
 //ici je récupère les films similaires à un film depuis son tmdbID
-router.get('/recommendedMoviesSecondPage', TMDBController.getRecommendedMoviesSecondPage);
+router.get(
+  '/recommendedMoviesSecondPage',
+  TMDBController.getRecommendedMoviesSecondPage
+);
 //ici je récupère la plateforme où un film est dispo depuis son tmdbID
 router.get('/provider', TMDBController.getMovieProvider);
 //ici je récupère les images d'un film depuis son tmdbID
@@ -78,4 +81,4 @@ router.get('/logout', userController.logout);
 router.delete('/deleteAccount', userController.deleteAccount);
 
 // on exporte le routeur
-module.exports = router
+module.exports = router;
