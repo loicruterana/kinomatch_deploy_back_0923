@@ -1,3 +1,4 @@
+const sanitizeHtml = require('sanitize-html');
 // je définis la variable TMDB qui récupère le fichier TMDB.js
 const TMDB = require('../utils/TMDB');
 // je définis la variable TMDBController qui contient un objet avec les méthodes getMovieDetails, getMovieCredits, getRecommendedMovies, getMovieProvider, getGenresList, getProvidersList, getPersonId, searchMovie, filterMovie
@@ -126,7 +127,7 @@ const TMDBController = {
   // je définis la méthode searchMovie qui permet de récupérer les films correspondant à la recherche de l'utilisateur
   searchMovie: async (req, res) => {
     // je définis la variable typedName qui récupère le nom du film via la query string
-    const typedName = req.query.typedName;
+    const typedName = sanitizeHtml(req.query.typedName);
     // je définis la variable page qui récupère le numéro de la page via la query string
     const page = req.query.page;
     // je définis la variable response qui envoie le nom du film à la méthode searchMovie du fichier TMDB.js

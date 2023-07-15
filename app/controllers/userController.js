@@ -1,3 +1,4 @@
+const sanitizeHtml = require('sanitize-html');
 // Je définis une variable user qui récupère le modèle User
 const User = require('../models/user');
 // Je définis une variable bcrypt qui récupère le module bcrypt
@@ -8,7 +9,9 @@ const userController = {
   signupAction: async function (req, res) {
     try {
       // Je définis les variables email, password et passwordConfirm qui récupèrent respectivement l'email, le mot de passe et la confirmation du mot de passe via le body
-      const { email, password, passwordConfirm } = req.body;
+      const email = sanitizeHtml(req.body.email);
+      const password = sanitizeHtml(req.body.password);
+      const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
       // Je crée la condition qui stipule que si le mot de passe et la confirmation du mot de passe ne correspondent pas, une erreur est renvoyée
       if (password !== passwordConfirm) {
         // Je renvoie une erreur au statut 400
@@ -57,7 +60,8 @@ const userController = {
   loginAction: async function (req, res) {
     try {
       // Je définis les variables email et password qui récupèrent respectivement l'email et le mot de passe via le body
-      const { email, password } = req.body;
+      const email = sanitizeHtml(req.body.email);
+      const password = sanitizeHtml(req.body.password);
       // Je crée la condition qui stipule que si l'email ou le mot de passe ne sont pas définis, une erreur est renvoyée avec le message "Email et mot de passe obligatoires"
       if (!email || !password) {
         return res
@@ -115,7 +119,6 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // delete req.session.user;
     req.session.authorized = false;
-    console.log('BEATEAU', req.session);
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
   },
