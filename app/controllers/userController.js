@@ -1,4 +1,7 @@
+// sanitize-html permet de nettoyer les entrées utilisateur pour éviter les attaques XSS
 const sanitizeHtml = require('sanitize-html');
+// Je définis une variable validator qui récupère le module validator
+const validator = require('validator');
 // Je définis une variable user qui récupère le modèle User
 const User = require('../models/user');
 // Je définis une variable bcrypt qui récupère le module bcrypt
@@ -12,6 +15,20 @@ const userController = {
       const email = sanitizeHtml(req.body.email);
       const password = sanitizeHtml(req.body.password);
       const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
+      //fonction isEmail de validator.js pour vérifier l'email
+      if (!validator.isEmail(email)) {
+        return res.status(400).json({ error: 'Adresse e-mail invalide' });
+      }
+
+      // Je vérifie si le mot de passe répond aux critères de complexité (au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial)
+      const passwordRegex =
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.*[a-zA-Z\d!@#$%^&*()_+]).{8,}$/;
+      if (!password.match(passwordRegex)) {
+        return res.status(400).json({
+          error:
+            'Le mot de passe doit contenir au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial.',
+        });
+      }
       // Je crée la condition qui stipule que si le mot de passe et la confirmation du mot de passe ne correspondent pas, une erreur est renvoyée
       if (password !== passwordConfirm) {
         // Je renvoie une erreur au statut 400

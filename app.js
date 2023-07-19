@@ -55,14 +55,13 @@ app.use(
       secure: false,
       expires: new Date(Date.now() + 60 * 60 * 1000), // 1 heure
       domain: 'localhost',
-
-      // domain: 'http://localhost:5173',
-      // httpOnly: false,
+      // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requêtes HTTP
+      // pour se protéger notamment des attaques XSS
+      httpOnly: true,
     },
   })
 );
 //
-app.enable('trust proxy');
 
 //Je configure mon app pour faire appel à cors
 app.use(cors(corsOptions));
