@@ -5,10 +5,10 @@ const bcrypt = require('bcrypt');
 //Je requête sequelize pour pouvoir utiliser cet outil lors de la création de ma bdd
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const { User, Film, Bookmarked, ToWatch, Watched } = require('./app/models');
+const { User, Film, Favorites, ToWatch, Watched } = require('./app/models');
 // const { User } = require('./app/models/user.js');
 // const { Film } = require('./app/models/film.js');
-// const { Bookmarked } = require('./app/models/bookmarked.js');
+// const { Favorites } = require('./app/models/favorites.js');
 // const { ToWatch } = require('./app/models/toWatch.js');
 // const { Watched } = require('./app/models/user.js');
 

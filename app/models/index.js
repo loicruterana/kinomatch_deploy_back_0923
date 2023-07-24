@@ -1,6 +1,6 @@
 const Film = require('./film');
 const User = require('./user');
-const Bookmarked = require('./bookmarked');
+const Favorites = require('./favorites');
 const ToWatch = require('./toWatch');
 const Watched = require('./watched');
-module.exports = { Film, User, Bookmarked, ToWatch, Watched };
+module.exports = { Film, User, Favorites, ToWatch, Watched };

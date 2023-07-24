@@ -4,7 +4,7 @@ const express = require('express');
 // on require les controllers
 const userController = require('./controllers/userController');
 const TMDBController = require('./controllers/TMDBController.js');
-const bookmarkedController = require('./controllers/bookmarkedController.js');
+const favoritesController = require('./controllers/favoritesController.js');
 const watchedController = require('./controllers/watchedController.js');
 const toWatchController = require('./controllers/toWatchController.js');
 const movieController = require('./controllers/movieController.js');
@@ -46,11 +46,11 @@ router.post('/addMovie', movieController.checkMovie);
 
 //routes films favoris
 //ici je récupère la liste des films favoris d'un user
-router.get('/bookmarkedMovies', bookmarkedController.bookmarkedList);
+router.get('/favoritesMovies', favoritesController.favoritesList);
 //ici j'insère en bdd un film qu'un user ajoute à sa liste "favoris"
-router.post('/bookmarkedMovies', bookmarkedController.addBookmarkedMovie);
+router.post('/favoritesMovies', favoritesController.addFavoritesMovie);
 //ici je supprime de la bdd un film qu'un user supprime de sa liste "favoris"
-router.delete('/deletebookmarked', bookmarkedController.deleteBookmarkedMovie);
+router.delete('/deleteFavorites', favoritesController.deleteFavoritesMovie);
 
 //routes films vus
 //ici je récupère la liste des films vus d'un user
