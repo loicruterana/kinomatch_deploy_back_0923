@@ -1,3 +1,5 @@
+const csurf = require('csurf');
+
 //Je requête dotenv pour pouvoir avoir accès à mes variables d'environnement
 require('dotenv').config();
 //Je requête express
@@ -61,7 +63,6 @@ app.use(
     },
   })
 );
-//
 
 //Je configure mon app pour faire appel à cors
 app.use(cors(corsOptions));

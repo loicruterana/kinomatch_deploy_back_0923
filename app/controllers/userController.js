@@ -12,7 +12,7 @@ const userController = {
   signupAction: async function (req, res) {
     try {
       // Je définis les variables email, password et passwordConfirm qui récupèrent respectivement l'email, le mot de passe et la confirmation du mot de passe via le body
-      const email = sanitizeHtml(req.body.email);
+      const enodemail = sanitizeHtml(req.body.email);
       const password = sanitizeHtml(req.body.password);
       const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
       //fonction isEmail de validator.js pour vérifier l'email
@@ -22,7 +22,7 @@ const userController = {
 
       // Je vérifie si le mot de passe répond aux critères de complexité (au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial)
       const passwordRegex =
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.*[a-zA-Z\d!@#$%^&*()_+]).{8,}$/;
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.*[a-zA-Z\d!@#$%^&*()_+]).{12,}$/;
       if (!password.match(passwordRegex)) {
         return res.status(400).json({
           error:
@@ -37,7 +37,7 @@ const userController = {
           .json({ error: 'Le mot de passe ne correspond pas' });
       }
       // Je crée la condition qui stipule que si le mot de passe est inférieur à 8 caractères, une erreur est renvoyée
-      if (password.length < 8) {
+      if (password.length < 12) {
         // Je renvoie une erreur au statut 400
         return res
           .status(400)
