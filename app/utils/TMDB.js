@@ -1,3 +1,5 @@
+// j'importe le module fetch
+const fetch = require('node-fetch');
 // Je crée l'objet TMDB qui contient les méthodes pour appeler l'API TMDB
 const TMDB = {
   // Je crée une propriété API_URL qui contient l'URL de base de l'API TMDB
