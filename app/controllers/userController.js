@@ -63,6 +63,7 @@ const userController = {
       const user = await User.create({
         email,
         password: hashedPassword,
+        picture: 'SamplePicCircle',
       });
       // Je renvoie un message de succès au statut 201 avec l'utilisateur créé
       req.session.user = user;
