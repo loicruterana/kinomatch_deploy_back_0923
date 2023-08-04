@@ -11,7 +11,7 @@ Film.init({
   codeTMDB: {
     // je définis le type de l'attribut codeTMDB
     type: DataTypes.INTEGER,
-    // je définis que l'attribut codeTMDB ne peut pas être null
+    // je définis que l'attribut codeTMDB peut être null
     allowNull: true,
   },
 }, {

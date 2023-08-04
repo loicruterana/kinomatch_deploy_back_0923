@@ -80,5 +80,11 @@ router.post('/logout', userController.logout);
 // route de suppression de compte
 router.delete('/deleteAccount', userController.deleteAccount);
 
+//routes pictures
+// route de récupération de la liste des pictures
+router.get('/pictures', userController.picturesList);
+// route de modification de la picture d'un user
+router.put('/pictures', userController.updatePicture);
+
 // on exporte le routeur
 module.exports = router;

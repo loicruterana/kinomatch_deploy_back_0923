@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 //Je requête sequelize pour pouvoir utiliser cet outil lors de la création de ma bdd
 const sequelize = require('./app/database');
 // on définit déjà les modèles, sans ça impossible pour sequelize de les connaitre
-const { User, Film, Favorites, ToWatch, Watched } = require('./app/models');
+const { User, Film, Favorites, ToWatch, Watched, Picture } = require('./app/models');
 // const { User } = require('./app/models/user.js');
 // const { Film } = require('./app/models/film.js');
 // const { Favorites } = require('./app/models/favorites.js');
@@ -37,9 +37,22 @@ const db = {
         password: defaultPassword,
       });
 
-      const film79 = await Film.create({
-        codeTMDB: 79,
+      const picture1 = await Picture.create({
+        codePicture: 'ghostfaceprofile',
       });
+
+      const picture2 = await Picture.create({
+        codePicture: 'leiaprofile',
+      });
+
+      const picture3 = await Picture.create({
+        codePicture: 'leonprofile',
+      });
+
+      const picture4 = await Picture.create({
+        codePicture: 'yodaprofile',
+      });
+
     } catch (error) {
       console.log(error);
     }

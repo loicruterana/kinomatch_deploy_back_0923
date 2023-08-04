@@ -4,6 +4,8 @@ const sanitizeHtml = require('sanitize-html');
 const validator = require('validator');
 // Je définis une variable user qui récupère le modèle User
 const User = require('../models/user');
+// Je définis une variable Picture qui récupère le modèle Picture
+const Picture = require('../models/picture');
 // Je définis une variable bcrypt qui récupère le module bcrypt
 const bcrypt = require('bcrypt');
 // Je définis une variable userController qui contient un objet avec les méthodes signupAction, loginAction, logoutAction et deleteAccount
@@ -156,6 +158,34 @@ const userController = {
     // Je retourne ma fonction
     return;
   },
+
+  picturesList: async function (req, res) {
+    try {
+      const picturesList = await Picture.findAll();
+      res.status(200).json({ picturesList });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  },
+
+  updatePicture: async function (req, res) {
+    try {
+      const { userID } = req.query;
+      const { picture } = req.body;
+      const user = await User.findOne({ where: { id: userID } });
+      if (user) {
+        await user.update({ picture: picture });
+      }
+      res.status(201).json({ message: 'user updated', user });
+      return;
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "Erreur lors de la mise à jour de l'utilisateur" });
+    }
+  }
 };
 // J'exporte mon objet userController
 module.exports = userController;
