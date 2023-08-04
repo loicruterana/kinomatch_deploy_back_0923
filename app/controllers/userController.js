@@ -12,7 +12,7 @@ const userController = {
   signupAction: async function (req, res) {
     try {
       // Je définis les variables email, password et passwordConfirm qui récupèrent respectivement l'email, le mot de passe et la confirmation du mot de passe via le body
-      const enodemail = sanitizeHtml(req.body.email);
+      const email = sanitizeHtml(req.body.email);
       const password = sanitizeHtml(req.body.password);
       const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
       //fonction isEmail de validator.js pour vérifier l'email
