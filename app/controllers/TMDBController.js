@@ -16,6 +16,7 @@ const TMDBController = {
     res.json(details);
     return;
   },
+  
   // je définis la méthode getMovieCredits qui permet de récupérer les acteurs et l'équipe technique d'un film depuis son tmdbID
   getMovieCredits: async (req, res) => {
     // je définis la variable movieID qui récupère l'id du film via la query string

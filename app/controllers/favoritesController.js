@@ -22,7 +22,27 @@ const favoritesController = {
             user_id: userID,
           },
         });
-        res.json(favoritesList);
+
+        // je crée un tableau qui va contenir les informations de chaque film à regarder
+      const favoritesListTitles = [];
+
+      // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
+      for (const movie of favoritesList) {
+        // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
+        const movieDetails = await TMDB.getMovieDetails(movie.dataValues.film_id);
+        // je convertis les informations de chaque film à regarder en json
+        const response = await movieDetails.json();
+        // je retourne le titre de chaque film à regarder
+        console.log("movieTitle :", response.title, "movieID :", movie.dataValues.film_id );
+        favoritesListTitles.push({ 
+          film_id: movie.dataValues.film_id,
+          film_title: response.title
+          });
+      }
+      
+      // res.json(favoritesList);
+      res.json({favoritesListTitles});      
+      
       } else {
         // Sinon, je renvoie une erreur indiquant que l'utilisateur n'est pas autorisé
         throw new Error('User is not authorized');

@@ -1,6 +1,7 @@
 // je définis la variable ToWatch qui récupère le modèle ToWatch
+const { response } = require('express');
 const ToWatch = require('../models/toWatch');
-
+const TMDB = require('../utils/TMDB');
 // je définis la variable toWatchController qui contient un objet avec les méthodes toWatchList, addToWatchMovie et deleteToWatchMovie
 const toWatchController = {
   // Je définis la méthode toWatchList qui permet de récupérer la liste des films à regarder par un utilisateur
@@ -20,8 +21,26 @@ const toWatchController = {
             user_id: userID,
           },
         });
-        // je retourne la liste des films à regarder par un utilisateur
-        res.json(toWatchList);
+
+      // je crée un tableau qui va contenir les informations de chaque film à regarder
+      const toWatchListTitles = [];
+
+      // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
+      for (const movie of toWatchList) {
+        // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
+        const movieDetails = await TMDB.getMovieDetails(movie.dataValues.film_id);
+        // je convertis les informations de chaque film à regarder en json
+        const response = await movieDetails.json();
+        // je retourne le titre de chaque film à regarder
+        console.log("movieTitle :", response.title, "movieID :", movie.dataValues.film_id );
+        toWatchListTitles.push({ 
+          film_id: movie.dataValues.film_id,
+          film_title: response.title
+          });
+      }
+      
+      // res.json(toWatchList);
+      res.json({toWatchListTitles});      
       }
     } catch (error) {
       console.log(error);
@@ -39,6 +58,7 @@ const toWatchController = {
     });
     // je stipule que si le film à regarder n'est pas présent dans la bdd, alors je l'ajoute
     if (!existingMovie && req.session.authorized) {
+    if (!existingMovie) {
       try {
         // je définis la variable addMovieTotoWatch qui permet d'ajouter un film à regarder dans la bdd par un utilisateur
         const addMovieTotoWatch = await ToWatch.create({
@@ -56,6 +76,7 @@ const toWatchController = {
       // je retourne le message "toWatch already created" si le film à regarder est déjà présent dans la bdd
       res.status(400).json({ message: 'toWatch already created' });
     }
+  }
   },
 
   // Je définis la méthode deleteToWatchMovie qui permet de supprimer de la bdd un film à regarder par un utilisateur

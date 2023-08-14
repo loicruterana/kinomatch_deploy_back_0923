@@ -11,6 +11,7 @@ const TMDB = {
       `${TMDB.API_URL}/genre/movie/list?api_key=${process.env.API_KEY}&language=fr-FR`
     );
   },
+  
 
   // Je crée une méthode getProvidersList qui appelle l'API TMDB pour récupérer la liste des plateformes de streaming en vue de l'afficher sur la home
   getProvidersList: async () => {
@@ -74,7 +75,14 @@ const TMDB = {
     return fetch(fullUrl);
   },
 
-  // Je crée une méthode getPeopleID qui appelle l'API TMDB pour récupérer l'ID d'une personne en vue de les afficher sur la home
+  //je crée la méthode me permettant de récupérer les acteurs populaires
+  getPopularActors: async () => {
+    return fetch(
+      `${TMDB.API_URL}/person/popular?api_key=${process.env.API_KEY}&language=fr-FR&page=1`
+    );
+  },
+
+  // Je crée une méthode getPeopleID qui appelle l'API TMDB pour permettre à l'utilisateur de rechercher un acteur et de récupérer son ID
   getPeopleId: async (typedName) => {
     return fetch(
       `${TMDB.API_URL}/search/person?api_key=${process.env.API_KEY}&query=${typedName}`
