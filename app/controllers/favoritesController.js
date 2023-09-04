@@ -1,5 +1,7 @@
 // je définis la variable favorites qui récupère le model favorites
 const Favorites = require('../models/favorites');
+const TMDB = require('../utils/TMDB');
+
 // je définis la variable favoritesController qui contient les méthodes favoritesList, addfavoritesMovie et deletefavoritesMovie
 const favoritesController = {
   // je définis la méthode favoritesList
@@ -24,25 +26,31 @@ const favoritesController = {
         });
 
         // je crée un tableau qui va contenir les informations de chaque film à regarder
-      const favoritesListTitles = [];
+        const favoritesListTitles = [];
 
-      // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
-      for (const movie of favoritesList) {
-        // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
-        const movieDetails = await TMDB.getMovieDetails(movie.dataValues.film_id);
-        // je convertis les informations de chaque film à regarder en json
-        const response = await movieDetails.json();
-        // je retourne le titre de chaque film à regarder
-        console.log("movieTitle :", response.title, "movieID :", movie.dataValues.film_id );
-        favoritesListTitles.push({ 
-          film_id: movie.dataValues.film_id,
-          film_title: response.title
+        // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
+        for (const movie of favoritesList) {
+          // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
+          const movieDetails = await TMDB.getMovieDetails(
+            movie.dataValues.film_id
+          );
+          // je convertis les informations de chaque film à regarder en json
+          const response = await movieDetails.json();
+          // je retourne le titre de chaque film à regarder
+          console.log(
+            'movieTitle :',
+            response.title,
+            'movieID :',
+            movie.dataValues.film_id
+          );
+          favoritesListTitles.push({
+            film_id: movie.dataValues.film_id,
+            film_title: response.title,
           });
-      }
-      
-      // res.json(favoritesList);
-      res.json({favoritesListTitles});      
-      
+        }
+
+        // res.json(favoritesList);
+        res.json({ favoritesListTitles });
       } else {
         // Sinon, je renvoie une erreur indiquant que l'utilisateur n'est pas autorisé
         throw new Error('User is not authorized');

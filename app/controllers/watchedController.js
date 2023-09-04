@@ -1,5 +1,6 @@
 // Je définis la variable Watched qui récupère le modèle Watched de app/models/watched.js
 const Watched = require('../models/watched');
+const TMDB = require('../utils/TMDB');
 
 // Je définis la variable watchedController qui contient un objet avec les méthodes watchedList, addWatchedMovie et deleteWatchedMovie
 const watchedController = {
@@ -21,25 +22,32 @@ const watchedController = {
           },
         });
 
-          // je crée un tableau qui va contenir les informations de chaque film à regarder
-      const watchedListTitles = [];
+        // je crée un tableau qui va contenir les informations de chaque film à regarder
+        const watchedListTitles = [];
 
-      // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
-      for (const movie of watchedList) {
-        // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
-        const movieDetails = await TMDB.getMovieDetails(movie.dataValues.film_id);
-        // je convertis les informations de chaque film à regarder en json
-        const response = await movieDetails.json();
-        // je retourne le titre de chaque film à regarder
-        console.log("movieTitle :", response.title, "movieID :", movie.dataValues.film_id );
-        watchedListTitles.push({ 
-          film_id: movie.dataValues.film_id,
-          film_title: response.title
+        // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
+        for (const movie of watchedList) {
+          // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
+          const movieDetails = await TMDB.getMovieDetails(
+            movie.dataValues.film_id
+          );
+          // je convertis les informations de chaque film à regarder en json
+          const response = await movieDetails.json();
+          // je retourne le titre de chaque film à regarder
+          console.log(
+            'movieTitle :',
+            response.title,
+            'movieID :',
+            movie.dataValues.film_id
+          );
+          watchedListTitles.push({
+            film_id: movie.dataValues.film_id,
+            film_title: response.title,
           });
-      }
-      
-      // res.json(watchedList);
-      res.json({watchedListTitles}); 
+        }
+
+        // res.json(watchedList);
+        res.json({ watchedListTitles });
       }
     } catch (error) {
       // si une erreur est renvoyée, je l'affiche dans la console et je renvoie une erreur 500

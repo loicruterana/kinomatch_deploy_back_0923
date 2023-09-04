@@ -78,6 +78,7 @@ const userController = {
   },
   // Je définis la méthode loginAction qui permet à un utilisateur de se connecter
   loginAction: async function (req, res) {
+    console.log(req.session.user);
     try {
       // Je définis les variables email et password qui récupèrent respectivement l'email et le mot de passe via le body
       const email = sanitizeHtml(req.body.email);
@@ -118,6 +119,8 @@ const userController = {
   },
 
   checkLogin: function (req, res) {
+    console.log(req.session);
+
     try {
       if (req.session.user) {
         return res
@@ -139,6 +142,7 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // delete req.session.user;
     req.session.authorized = false;
+    req.session = null;
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
   },
@@ -186,7 +190,7 @@ const userController = {
         .status(500)
         .json({ error: "Erreur lors de la mise à jour de l'utilisateur" });
     }
-  }
+  },
 };
 // J'exporte mon objet userController
 module.exports = userController;
