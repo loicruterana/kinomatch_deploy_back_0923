@@ -55,7 +55,7 @@ app.use(
     cookie: {
       // sameSite: 'none',
       secure: false,
-      expires: new Date(Date.now() + 1200 * 60 * 1000), // 1 heure
+      expires: new Date(Date.now() + 1200 * 60 * 1000),
       domain: 'localhost',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requêtes HTTP
       // pour se protéger notamment des attaques XSS

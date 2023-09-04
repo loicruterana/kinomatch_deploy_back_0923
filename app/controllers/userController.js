@@ -140,9 +140,10 @@ const userController = {
   // Je définis la méthode logoutAction qui permet à un utilisateur de se déconnecter
   logout: function (req, res) {
     // Je supprime l'utilisateur de la session
-    // delete req.session.user;
-    req.session.authorized = false;
+    // req.session.authorized = false;
     req.session = null;
+    res.clearCookie('connect.sid', { path: '/' }).status(200).send('Ok.');
+
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
   },
