@@ -164,7 +164,9 @@ const TMDB = {
     genreID,
     providerID,
     countryID,
-    castID
+    castID,
+    noteGTEID,
+
   ) => {
     let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${process.env.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
     let urlDecade = '';
@@ -173,6 +175,7 @@ const TMDB = {
     let urlCountry = '';
     // let urlRuntime = '';
     let urlCast = '';
+    let urlNoteGTE = '';
 
     if (!isNaN(year1)) {
       urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`;
@@ -194,10 +197,58 @@ const TMDB = {
       urlCast = `&with_cast=${castID}`;
     }
 
+    if (!isNaN(noteGTEID)) {
+      urlNoteGTE = `&vote_average.gte=${noteGTEID}`;
+    }
+
     const fullUrl =
-      baseUrl + urlDecade + urlProvider + urlGenre + urlCountry + urlCast;
+      baseUrl + urlDecade + urlProvider + urlGenre + urlCountry + urlCast + urlNoteGTE;
     return fetch(fullUrl);
   },
+
+  // Je crée la même méthode que filterMovieAdvanced mais avec un paramètre randomPage en plus pour pouvoir faire un appel à l'API TMDB avec une page aléatoire
+  filterRandomMovieAdvanced: async ( year1, year2, genreID, providerID, countryID, castID, noteGTEID, randomPage) => {
+    let baseUrl = `${TMDB.API_URL}/discover/movie?api_key=${process.env.API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false`;
+    let urlDecade = '';
+    let urlProvider = '';
+    let urlGenre = '';
+    let urlCountry = '';
+    let urlCast = '';
+    let urlNoteGTE = '';
+    let urlrandomPage = '';
+
+    if (!isNaN(year1)) {
+      urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`;
+    }
+    
+    if (providerID !== undefined) {
+      urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
+    }
+
+    if (genreID !== undefined) {
+      urlGenre = `&with_genres=${genreID}`;
+    }
+    
+    if (countryID !== undefined) {
+      urlCountry = `&with_origin_country=${countryID}`;
+    }
+    
+    if (castID !== undefined) {
+      urlCast = `&with_cast=${castID}`;
+    }
+
+    if (!isNaN(noteGTEID)) {
+      urlNoteGTE = `&vote_average.gte=${noteGTEID}`;
+    }
+
+    if (randomPage !== undefined) {
+      urlrandomPage = `&page=${randomPage}`;
+    }
+
+    const fullUrl = baseUrl + urlDecade + urlProvider + urlGenre + urlCountry + urlCast + urlNoteGTE + urlrandomPage;
+    return fetch(fullUrl);
+  },
+    
 };
 
 module.exports = TMDB;

@@ -204,7 +204,10 @@ const TMDBController = {
     const countryID = req.query.countryID;
     // je définis la variable castID qui récupère l'id de l'acteur via la query string
     const castID = req.query.castID;
-
+    // ici je définis la variable noteGTEID qui récupère la note minimale via la query string
+    const noteMini = req.query.notation;
+    // je crée une variable noteGTEID qui divise la noteMini par 10
+    const noteGTEID = noteMini / 10;
     // const runtime = 120;
     // const runtime = req.query.runtime; (ex : )
     // const runtime2 = Number(runtime);
@@ -217,7 +220,8 @@ const TMDBController = {
       genreID,
       providerID,
       countryID,
-      castID
+      castID,
+      noteGTEID
     );
     // je récupère les films correspondant aux filtres dans un objet json
     const filteredMovies = await response.json();
@@ -225,6 +229,45 @@ const TMDBController = {
     res.json(filteredMovies);
     return;
   },
+
+  // je définis la méthode filterRandomMovieAdvanced qui correspond à la méthode filterMovieAdvanced mais avec un paramètre randomPage récupéré grâce au front
+  filterRandomMovieAdvanced: async (req, res) => {
+    // je définis la variable genreID qui récupère l'id du genre via la query string
+    const genreID = req.query.genreID;
+    // je définis la variable providerID qui récupère l'id de la plateforme de streaming via la query string
+    const providerID = req.query.providerID;
+    // je définis la variable decade qui récupère la décennie via la query string
+    const decade = req.query.decade;
+    // je définis la variable year1 qui transforme la décennie en nombre correspondant à la première année de la décennie
+    const year1 = Number(decade);
+    // je définis la variable year2 qui transforme la décennie en nombre correspondant à la dernière année de la décennie
+    const year2 = Number(decade) + 9;
+    // je définis la variable countryID qui récupère l'id du pays via la query string
+    const countryID = req.query.countryID;
+    // je définis la variable castID qui récupère l'id de l'acteur via la query string
+    const castID = req.query.castID;
+    // je définis la variable noteGTEID qui récupère la note minimale via la query string
+    const noteGTEID = req.query.noteGTEID;
+    // je définis la variable randomPage qui récupère la page aléatoire via la query string
+    const randomPage = req.query.randomPage;
+    // je définis la variable response qui envoie les paramètres à la méthode filterRandomMovieAdvanced du fichier TMDB.js
+    const response = await TMDB.filterRandomMovieAdvanced(
+      year1,
+      year2,
+      genreID,
+      providerID,
+      countryID,
+      castID,
+      noteGTEID,
+      randomPage
+    );
+    // je récupère les films correspondant aux filtres dans un objet json
+    const filteredMovies = await response.json();
+    // j'envoie les films correspondant aux filtres dans un nouveau fichier json
+    res.json(filteredMovies);
+    return;
+  },
+
 };
 
 // j'exporte le module TMDBController
