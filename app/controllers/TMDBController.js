@@ -212,7 +212,7 @@ const TMDBController = {
     // const runtime = req.query.runtime; (ex : )
     // const runtime2 = Number(runtime);
     // const runtime1 = Number(runtime) - 30;
-
+    
     // je définis la variable response qui envoie les paramètres à la méthode filterMovieAdvanced du fichier TMDB.js
     const response = await TMDB.filterMovieAdvanced(
       year1,
@@ -223,6 +223,14 @@ const TMDBController = {
       castID,
       noteGTEID
     );
+    console.log("les params de la requête : ", 
+    year1,
+    year2,
+    genreID,
+    providerID,
+    countryID,
+    castID,
+    noteGTEID );
     // je récupère les films correspondant aux filtres dans un objet json
     const filteredMovies = await response.json();
     // j'envoie les films correspondant aux filtres dans un nouveau fichier json
@@ -246,8 +254,10 @@ const TMDBController = {
     const countryID = req.query.countryID;
     // je définis la variable castID qui récupère l'id de l'acteur via la query string
     const castID = req.query.castID;
-    // je définis la variable noteGTEID qui récupère la note minimale via la query string
-    const noteGTEID = req.query.noteGTEID;
+    // ici je définis la variable noteGTEID qui récupère la note minimale via la query string
+    const noteMini = req.query.notation;
+    // je crée une variable noteGTEID qui divise la noteMini par 10
+    const noteGTEID = noteMini / 10;
     // je définis la variable randomPage qui récupère la page aléatoire via la query string
     const randomPage = req.query.randomPage;
     // je définis la variable response qui envoie les paramètres à la méthode filterRandomMovieAdvanced du fichier TMDB.js

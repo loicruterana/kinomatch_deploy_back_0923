@@ -36,9 +36,9 @@ router.get('/videos', TMDBController.getMovieVideos);
 // ici je cherche un film en fonction du nom tapé dans la barre de recherche
 router.get('/search', TMDBController.searchMovie);
 //ici je sélectionne des films en fonction des filtres de la home
-router.get('/films', TMDBController.filterMovie);
+// router.get('/films', TMDBController.filterMovie);
 //ici je sélectionne des films en fonction des filtres de la home
-router.get('/randomFilms', TMDBController.filterRandomMovie);
+// router.get('/randomFilms', TMDBController.filterRandomMovie);
 //ici je sélectionne des films en fonction de de nouveaux filtres de la home
 router.get('/filmsAdvanced', TMDBController.filterMovieAdvanced);
 // ici je sélectionne des films random en fonction de de nouveaux filtres de la home
