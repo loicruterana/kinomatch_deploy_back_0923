@@ -198,7 +198,7 @@ const TMDB = {
     }
 
     if (!isNaN(noteGTEID)) {
-      urlNoteGTE = `&vote_average.gte=${noteGTEID}`;
+      urlNoteGTE = `&vote_average.gte=${noteGTEID}&vote_count.gte=100`;
     }
 
     const fullUrl =
@@ -238,7 +238,7 @@ const TMDB = {
     }
 
     if (!isNaN(noteGTEID)) {
-      urlNoteGTE = `&vote_average.gte=${noteGTEID}`;
+      urlNoteGTE = `&vote_average.gte=${noteGTEID}&vote_count.gte=100`;
     }
 
     if (randomPage !== undefined) {
