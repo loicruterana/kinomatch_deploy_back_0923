@@ -18,9 +18,9 @@ const userController = {
       const password = sanitizeHtml(req.body.password);
       const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
       //fonction isEmail de validator.js pour vérifier l'email
-      if (!validator.isEmail(email)) {
-        return res.status(400).json({ error: 'Adresse e-mail invalide' });
-      }
+      // if (!validator.isEmail(email)) {
+      //   return res.status(400).json({ error: 'Adresse e-mail invalide' });
+      // }
 
       // Je vérifie si le mot de passe répond aux critères de complexité (au moins un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial)
       const passwordRegex =
@@ -47,13 +47,13 @@ const userController = {
       }
       // Je crée la condition qui stipule que si l'email n'est pas défini, une erreur est renvoyée avec le message "Email obligatoire"
       if (!email) {
-        return res.status(400).json({ error: 'Email obligatoire' });
+        return res.status(400).json({ error: 'Pseudo obligatoire' });
       }
       // Je crée une variable existingUser qui cherche un utilisateur dans la base de données avec l'email récupéré via le body
       const existingUser = await User.findOne({ where: { email } });
       // Je crée la condition qui stipule que si l'utilisateur existe déjà, une erreur est renvoyée avec le message "Email déjà utilisé"
       if (existingUser) {
-        return res.status(400).json({ error: 'Email déjà utilisé' });
+        return res.status(400).json({ error: 'Pseudo déjà utilisé' });
       }
       // Je crée une variable saltRounds qui contient le nombre de tours de hashage du password
       const saltRounds = 10;
@@ -87,13 +87,13 @@ const userController = {
       if (!email || !password) {
         return res
           .status(400)
-          .json({ error: 'Email et mot de passe obligatoires' });
+          .json({ error: 'Pseudo et mot de passe obligatoires' });
       }
       // Je crée une variable user qui cherche un utilisateur dans la base de données avec l'email récupéré via le body
       const user = await User.findOne({ where: { email } });
       // Je crée la condition qui stipule que si l'utilisateur n'existe pas, une erreur est renvoyée avec le message "Email ou mot de passe invalide"
       if (!user) {
-        return res.status(400).json({ error: 'Email invalide' });
+        return res.status(400).json({ error: 'Pseudo invalide' });
       }
       // Je crée une variable isPasswordValid qui compare le mot de passe récupéré via le body avec le mot de passe de l'utilisateur
       const isPasswordValid = await bcrypt.compare(password, user.password);

@@ -8,16 +8,16 @@ class User extends Model {}
 User.init(
   {
     email: {
-      // je définis le type de l'attribut email
+      // je définis le type de l'attribut pseudo
       type: DataTypes.TEXT,
-      // je définis que l'attribut email ne peut pas être null
+      // je définis que l'attribut pseudo ne peut pas être null
       allowNull: false,
-      // je définis que l'attribut email doit être unique
+      // je définis que l'attribut pseudo doit être unique
       unique: true,
       // je définis que l'attribut email doit être une adresse email
-      validate: {
-        isEmail: true,
-      },
+      // validate: {
+      //   isEmail: true,
+      // },
     },
     password: {
       // je définis le type de l'attribut password

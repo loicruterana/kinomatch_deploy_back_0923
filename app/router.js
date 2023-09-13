@@ -16,6 +16,8 @@ const router = express.Router();
 router.get('/genres', TMDBController.getGenresList);
 //ici je récupère la liste des plateformes de streaming
 router.get('/providers', TMDBController.getProvidersList);
+//ici je récupère la liste des pays de production
+router.get('/countries', TMDBController.getCountriesList);
 //ici je récupère les détails généraux d'un film depuis son tmdbID
 router.get('/detail', TMDBController.getMovieDetails);
 //ici je récupère le cast&crew d'un film depuis son tmdbID

@@ -103,6 +103,18 @@ const TMDBController = {
     res.json(genresList);
     return;
   },
+
+  // je définis la méthode getCountriesList qui récupère la liste des pays de films depuis la méthode getCountriesList du fichier TMDB.js
+  getCountriesList: async (req, res) => {
+    // je définis la variable response qui récupère la méthode getCountriesList du fichier TMDB.js
+    const response = await TMDB.getCountriesList();
+    // je transforme la liste des pays de films en objet json
+    const countriesList = await response.json();
+    // j'envoie la liste des pays de films dans un nouveau fichier json
+    res.json(countriesList);
+    return;
+  },
+
   // je définis la méthode getProvidersList qui permet de récupérer la liste des plateformes de streaming
   getProvidersList: async (req, res) => {
     // je définis la variable response qui récupère les plateformes de streaming depuis la méthode getProvidersList du fichier TMDB.js

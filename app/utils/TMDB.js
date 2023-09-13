@@ -20,6 +20,13 @@ const TMDB = {
     );
   },
 
+  // Je crée une méthode getCountriesList qui appelle l'API TMDB pour récupérer la liste des pays de production en vue de l'afficher sur la home
+  getCountriesList: async () => {
+    return fetch(
+      `${TMDB.API_URL}/configuration/countries?api_key=${process.env.API_KEY}&language=fr-FR`
+    );
+  },
+
   // Je crée une méthode getMovieDetails qui appelle l'API TMDB pour récupérer les détails généraux d'un film en vue de les afficher sur la page du film
   getMovieDetails: async (movieID) => {
     return fetch(
