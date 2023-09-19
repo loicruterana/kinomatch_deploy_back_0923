@@ -189,6 +189,10 @@ const TMDB = {
     }
 
     if (providerID !== undefined) {
+      if (providerID.constructor === Array) {
+        let newArr = providerID.join(',').replace(/,/g, '|').split();
+        providerID = newArr;
+      }
       urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
     }
 
@@ -229,6 +233,10 @@ const TMDB = {
     }
     
     if (providerID !== undefined) {
+      if (providerID.constructor === Array) {
+        let newArr = providerID.join(',').replace(/,/g, '|').split();
+        providerID = newArr;
+      }
       urlProvider = `&with_watch_providers=${providerID}&watch_region=FR`;
     }
 
