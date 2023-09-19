@@ -201,6 +201,10 @@ const TMDB = {
     }
 
     if (countryID !== undefined) {
+      if (countryID.constructor === Array) {
+        let newArr = countryID.join(',').replace(/,/g, '|').split();
+        countryID = newArr;
+      }
       urlCountry = `&with_origin_country=${countryID}`;
     }
 
@@ -245,6 +249,10 @@ const TMDB = {
     }
     
     if (countryID !== undefined) {
+      if (countryID.constructor === Array) {
+        let newArr = countryID.join(',').replace(/,/g, '|').split();
+        countryID = newArr;
+      }
       urlCountry = `&with_origin_country=${countryID}`;
     }
     

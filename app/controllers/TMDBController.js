@@ -289,7 +289,6 @@ const TMDBController = {
     res.json(filteredMovies);
     return;
   },
-
 };
 
 // j'exporte le module TMDBController
