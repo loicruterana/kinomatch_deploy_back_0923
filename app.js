@@ -4,7 +4,7 @@ const csurf = require('csurf');
 require('dotenv').config();
 //Je requête express
 const express = require('express');
-//Je requête express-session pour pouvoir créer et gérer des sessions utilisateurs
+//Je requête express-session pour pouvoir créer et gérer des sessions utilisateur
 const session = require('express-session');
 //Je fais appel à mon routeur
 const router = require('./app/router.js');
