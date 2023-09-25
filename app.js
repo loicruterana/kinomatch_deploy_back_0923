@@ -4,7 +4,7 @@ const csurf = require('csurf');
 require('dotenv').config();
 //Je requête express
 const express = require('express');
-//Je requête express-session pour pouvoir créer et gérer des sessions utilisateur
+//Je requête express-session pour pouvoir créer et gérer des sessions utilisateurs
 const session = require('express-session');
 //Je fais appel à mon routeur
 const router = require('./app/router.js');
@@ -20,11 +20,12 @@ const app = express();
 // Je configure cors pour ouvrir l'accès
 const corsOptions = {
   origin: [
-    'https://projet-06-kinomatch-front.vercel.app',
+    'https://kinomatch-front.vercel.app',
     'http://localhost:5173',
     'https://deploy-back-kinomatch.herokuapp.com/',
+    'https://kinomatch-back-production.up.railway.app',
+    'https://kinomatch-front-k1a0jy4ut-kinomatch.vercel.app',
     'https://application.kinomatch.com',
-    'https://kinomatch-front-ouv3og116-kinomatch.vercel.app'
   ], // Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
@@ -53,12 +54,13 @@ app.use(
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app, chaine de caractère qui est utilisé pour encoder les cookies
     // autres otpions : on met celles recommandées par la doc
     resave: true, // si on laisse à false, on est obligé de déclencher la sauvegarde à la main avec request.session.save()
-    // saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
+    saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
     cookie: {
-      // sameSite: 'none',
+      sameSite: 'strict',
       secure: false,
-      expires: new Date(Date.now() + 1200 * 60 * 1000),
-      domain: 'localhost',
+      expires: new Date(Date.now() + 60 * 60 * 1000), // 1 heure
+      // saveUninitialized : false,
+      domain: 'kinomatch.com',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requêtes HTTP
       // pour se protéger notamment des attaques XSS
       httpOnly: true,
