@@ -24,7 +24,7 @@ const corsOptions = {
     'http://localhost:5173',
     'https://deploy-back-kinomatch.herokuapp.com/',
     'https://kinomatch-back-production.up.railway.app',
-    'https://kinomatch-front-k1a0jy4ut-kinomatch.vercel.app',
+    'https://kinomatch-front-ob2v215qk-kinomatch.vercel.app',
     'https://application.kinomatch.com',
   ], // Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
