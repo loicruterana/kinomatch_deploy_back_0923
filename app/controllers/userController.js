@@ -118,24 +118,24 @@ const userController = {
     }
   },
 
-  // checkLogin: function (req, res) {
-  //   console.log(req.session);
+  checkLogin: function (req, res) {
+    console.log(req.session);
 
-  //   try {
-  //     if (req.session.user) {
-  //       return res
-  //         .status(200)
-  //         .json({ authorized: true, user: req.session.user });
-  //     } else {
-  //       return res.status(200).json({ authorized: false });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     return res
-  //       .status(500)
-  //       .json({ error: "Erreur lors de la vérification de l'utilisateur" });
-  //   }
-  // },
+    try {
+      if (req.session.user) {
+        return res
+          .status(200)
+          .json({ authorized: true, user: req.session.user });
+      } else {
+        return res.status(200).json({ authorized: false });
+      }
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "Erreur lors de la vérification de l'utilisateur" });
+    }
+  },
 
   // Je définis la méthode logoutAction qui permet à un utilisateur de se déconnecter
   logout: function (req, res) {
