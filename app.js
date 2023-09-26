@@ -54,7 +54,7 @@ app.use(express.json());
 app.use(
   session({
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app, chaine de caractère qui est utilisé pour encoder les cookies
-    // autres otpions : on met celles recommandées par la doc
+    // autres otpions : on met celles recommandés par la doc
     resave: true, // si on laisse à false, on est obligé de déclencher la sauvegarde à la main avec request.session.save()
     // saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
     cookie: {
