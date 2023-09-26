@@ -21,7 +21,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'https://kinomatch-front.vercel.app',
-    // 'http://localhost:5173',
+    'http://localhost:5173',
     'https://deploy-back-kinomatch.herokuapp.com/',
     'https://kinomatch-back-production.up.railway.app',
     'https://kinomatch-front-ob2v215qk-kinomatch.vercel.app',
