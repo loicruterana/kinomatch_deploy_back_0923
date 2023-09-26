@@ -78,7 +78,7 @@ router.post('/signup', userController.signupAction);
 // route de connection
 router.post('/login', userController.loginAction);
 // route de vérification de connection
-router.get('/login', userController.checkLogin);
+// router.get('/login', userController.checkLogin);
 // route de déconnection
 router.post('/logout', userController.logout);
 // route de suppression de compte
