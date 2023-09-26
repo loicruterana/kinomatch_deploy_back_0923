@@ -56,12 +56,11 @@ app.use(
     secret: process.env.APP_SECRET, // avec un secret specifique à mon app, chaine de caractère qui est utilisé pour encoder les cookies
     // autres otpions : on met celles recommandées par la doc
     resave: true, // si on laisse à false, on est obligé de déclencher la sauvegarde à la main avec request.session.save()
-    saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
+    // saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
     cookie: {
-      sameSite: 'strict',
+      // sameSite: 'none',
       secure: false,
-      expires: new Date(Date.now() + 60 * 60 * 1000), // 1 heure
-      // saveUninitialized : false,
+      expires: new Date(Date.now() + 1200 * 60 * 1000),
       domain: 'kinomatch.com',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requêtes HTTP
       // pour se protéger notamment des attaques XSS
