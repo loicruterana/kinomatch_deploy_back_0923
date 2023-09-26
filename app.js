@@ -62,7 +62,7 @@ app.use(
 );
 
 //Je configure mon app pour faire appel à cors
-app.use(cors({origin: '*'}));
+app.use(cors(corsOptions));
 
 //Je configure mon app pour accéder au routeur
 app.use(router);
