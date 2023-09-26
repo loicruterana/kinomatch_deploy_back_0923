@@ -22,12 +22,14 @@ const corsOptions = {
   origin: [
     'https://kinomatch-front.vercel.app',
     'http://localhost:5173',
+    'https://kinomatch-front-qkeo74w5f-kinomatch.vercel.app',
     'https://deploy-back-kinomatch.herokuapp.com/',
     'https://kinomatch-back-production.up.railway.app',
     'https://kinomatch-front-ob2v215qk-kinomatch.vercel.app',
     'https://application.kinomatch.com',
     'https://www.api.kinomatch.com',
-    // 'https://kinomatch-front.vercel.app'
+    'https://kinomatch-front.vercel.app',
+    'https://kinomatch-front-ob2v215qk-kinomatch.vercel.app',
   ], // Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
