@@ -60,10 +60,10 @@ app.use(
     resave: true, // si on laisse à false, on est obligé de déclencher la sauvegarde à la main avec request.session.save()
     // saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
     cookie: {
-      sameSite: 'strict',
+      // sameSite: 'strict',
       secure: false,
       expires: new Date(Date.now() + 1200 * 60 * 1000),
-      domain: 'kinomatch.com',
+      domain: 'localhost',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requêtes HTTP
       // pour se protéger notamment des attaques XSS
       httpOnly: true,
