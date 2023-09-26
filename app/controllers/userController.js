@@ -80,7 +80,7 @@ const userController = {
   loginAction: async function (req, res) {
     console.log(req.session.user);
     try {
-      // Je définis les variables email et password qui récupèrent respectivement l'email et le mot de passe via le body
+      // Je définis les variable email et password qui récupèrent respectivement l'email et le mot de passe via le body
       const email = sanitizeHtml(req.body.email);
       const password = sanitizeHtml(req.body.password);
       // Je crée la condition qui stipule que si l'email ou le mot de passe ne sont pas définis, une erreur est renvoyée avec le message "Email et mot de passe obligatoires"
