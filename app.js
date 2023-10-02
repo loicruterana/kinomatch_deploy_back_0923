@@ -30,7 +30,7 @@ const corsOptions = {
     'https://www.api.kinomatch.com',
     'https://kinomatch-front.vercel.app',
     'https://kinomatch-front-7oxl36rzb-kinomatch.vercel.app',
-    'https://kinomatch-front-9k59xz18h-kinomatch.vercel.app/',
+    'https://kinomatch-front-9k59xz18h-kinomatch.vercel.app',
   ], // Origines autorisées
   // origin: ['http://localhost:5173'],// Origines autorisées
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'], // Méthodes HTTP autorisées
