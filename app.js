@@ -63,7 +63,7 @@ app.use(
     cookie: {
       sameSite: 'strict',
       secure: false,
-      expires: new Date(Date.now() + 1200 * 60 * 1000),
+      expires: new Date(Date.now() + 60 * 60 * 1000), // 1 heure
       domain: 'kinomatch.com',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requête HTTP
       // pour se protéger notamment des attaques XSS
