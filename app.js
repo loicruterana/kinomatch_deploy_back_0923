@@ -63,8 +63,8 @@ app.use(
     cookie: {
       sameSite: 'strict',
       secure: false,
-      expires: new Date(Date.now() + 60 * 1000), // expires after 1 minute if the user doesn't close their browser
-      maxAge: null,
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // expires after 24 hours if the user doesn't close their browser
+      maxAge: null, // set maxAge to null to ensure that the cookie expires based on the 'expires' property
       domain: 'kinomatch.com',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requête HTTP
       // pour se protéger notamment des attaques XSS
