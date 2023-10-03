@@ -64,7 +64,7 @@ app.use(
       sameSite: 'strict',
       secure: false,
       // ici je demande au cookie d'expirer au bout de 1min
-      maxAge: 1000 * 60 * 1,
+      maxAge: new Date(Date.now() + 1000 * 60 * 1),
       domain: 'kinomatch.com',
       // httpOnly : le cookie ne peut être accessible ou modifié que par le serveur web via des requête HTTP
       // pour se protéger notamment des attaques XSS
