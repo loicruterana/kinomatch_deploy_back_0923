@@ -175,6 +175,35 @@ const userController = {
     }
   },
 
+  getUserPicture: async function (req, res) {
+
+        // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
+        const { userID } = req.query;
+
+        try {
+            // // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
+            // if (!userID) {
+            //   throw new Error('userID is not defined');
+            // }
+            
+            // if (userID && req.session.authorized) {
+            // je définis la variable picture qui va chercher dans la bdd la picture de l'utilisateur
+            const picture = await Picture.findOne({
+              where: { id: userID },
+            });
+
+            console.log('picture:' + picture);
+            console.log('userID:' + userID);
+
+            res.status(200).json({ picture });
+            // }
+
+        } catch (error) {
+          console.error(error);
+          res.status(500).send('Internal Server Error');
+        }
+      },
+
   updatePicture: async function (req, res) {
     try {
       const { userID } = req.query;
