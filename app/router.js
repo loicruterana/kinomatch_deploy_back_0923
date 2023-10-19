@@ -92,5 +92,9 @@ router.put('/pictures', userController.updatePicture);
 // route de récupération de la picture d'un user
 router.get('/picture', userController.getUserPicture);
 
+//route user
+// route de récupération de la liste des users
+router.get('/users', userController.getUserList);
+
 // on exporte le routeur
 module.exports = router;

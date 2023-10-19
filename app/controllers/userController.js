@@ -221,6 +221,20 @@ const userController = {
         .json({ error: "Erreur lors de la mise à jour de l'utilisateur" });
     }
   },
+
+  getUserList: async function (req, res) {
+    
+    try {
+      const userList = await User.findAll();
+      console.log(userList);
+      res.status(200).json({ userList });
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+      
+    }
+  },
 };
 // J'exporte mon objet userController
 module.exports = userController;
