@@ -178,7 +178,7 @@ const userController = {
   getUserPicture: async function (req, res) {
 
         // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
-        const { userID } = 1;
+        const { userID } = req.query;
 
         try {
             // // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
