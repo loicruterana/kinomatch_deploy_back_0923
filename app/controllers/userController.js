@@ -158,6 +158,7 @@ const userController = {
     if (user) {
       await user.destroy();
       req.session = null;
+      res.end();
     }
     // Je renvoie un message de succès au statut 201 avec l'utilisateur supprimé
     res.status(201).json({ message: 'user deleted', user });
