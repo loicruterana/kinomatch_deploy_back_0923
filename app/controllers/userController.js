@@ -142,13 +142,19 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // req.session.authorized = false;
     req.session = null;
-    res.clearCookie('connect.sid', { path: '/' }).status(200).send('Ok.');
 
+    // je détruis le cookie de session
+    req.session.destroy(function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.clearCookie('connect.sid');
+        res.redirect('/');
+      }
+    });
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
-
-    res.end();
-  },
+    },
   // Je définis la méthode deleteAccount qui permet à un utilisateur de supprimer son compte
   deleteAccount: async function (req, res) {
     // Je définis la variable userID qui récupère l'id de l'utilisateur via la query
