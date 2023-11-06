@@ -62,7 +62,7 @@ app.use(
     // saveUninitialized: false, // pour ne pas avoir le deprecated dans le terminal
     cookie: {
       sameSite: 'strict',
-      secure: false,
+      secure: true,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // expires after 24 hours if the user doesn't close their browser
       maxAge: null, // set maxAge to null to ensure that the cookie expires based on the 'expires' property
       domain: 'kinomatch.com',
