@@ -150,7 +150,7 @@ const userController = {
       console.log('Le cookie existe');
     }
 
-    res.clearCookie('connect.sid', {domain: kinomatch.com, path: '/' }).status(200).send('Ok.');    
+    res.clearCookie('connect.sid', {domain: 'kinomatch.com', path: '/' }).status(200).send('Ok.');    
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
     },
