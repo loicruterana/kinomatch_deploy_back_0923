@@ -142,9 +142,7 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // req.session.authorized = false;
     req.session = null;
-    res.clearCookie('connect.sid', { path: '/' }).status(200).send('Ok.');
-
-    
+    res.clearCookie('connect.sid', {domain: kinomatch.com, path: '/' }).status(200).send('Ok.');    
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
     },
@@ -159,7 +157,7 @@ const userController = {
     if (user) {
       await user.destroy();
       req.session = null;
-      res.end();
+      res.clearCookie('connect.sid', {domain: kinomatch.com, path: '/' }).status(200).send('Ok.');    
     }
     // Je renvoie un message de succès au statut 201 avec l'utilisateur supprimé
     res.status(201).json({ message: 'user deleted', user });
