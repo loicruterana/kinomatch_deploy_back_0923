@@ -146,6 +146,8 @@ const userController = {
 
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
+
+    res.end();
   },
   // Je définis la méthode deleteAccount qui permet à un utilisateur de supprimer son compte
   deleteAccount: async function (req, res) {
