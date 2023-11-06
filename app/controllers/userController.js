@@ -142,6 +142,14 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // req.session.authorized = false;
     req.session = null;
+
+    if (!req.cookies['connect.sid']) {
+      console.log('Le cookie n\'existe pas');
+      return res.status(400).json({ error: 'Le cookie n\'existe pas' });
+    } else {
+      console.log('Le cookie existe');
+    }
+
     res.clearCookie('connect.sid', {domain: kinomatch.com, path: '/' }).status(200).send('Ok.');    
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
