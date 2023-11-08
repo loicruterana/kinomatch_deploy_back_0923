@@ -226,7 +226,8 @@ const userController = {
     try {
       const userList = await User.findAll(
         {
-          order: ['id', 'DESC']
+       // sort by id in ascending order
+        order: [['id', 'ASC']],
         }
       );
       console.log(userList);
