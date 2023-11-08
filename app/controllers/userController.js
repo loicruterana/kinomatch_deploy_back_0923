@@ -189,13 +189,6 @@ const userController = {
         const { userID } = req.query;
 
         try {
-            // // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
-            // if (!userID) {
-            //   throw new Error('userID is not defined');
-            // }
-            
-            // if (userID && req.session.authorized) {
-            // je définis la variable picture qui va chercher dans la bdd la picture de l'utilisateur
             const picture = await Picture.findOne({
               where: { id: userID },
             });
@@ -204,8 +197,6 @@ const userController = {
             console.log('userID:' + userID);
 
             res.status(200).json({ picture });
-            // }
-
         } catch (error) {
           console.error(error);
           res.status(500).send('Internal Server Error');
@@ -233,7 +224,11 @@ const userController = {
   getUserList: async function (req, res) {
     
     try {
-      const userList = await User.findAll();
+      const userList = await User.findAll(
+        {
+          order: ['id', 'DESC']
+        }
+      );
       console.log(userList);
       res.status(200).json({ userList });
 
