@@ -142,18 +142,11 @@ const userController = {
     // Je supprime l'utilisateur de la session
     // req.session.authorized = false;
     req.session = null;
+    res.clearCookie('connect.sid', { path: '/' }).status(200).send('Ok.');
 
-    if (!req.cookies['connect.sid']) {
-      console.log('Le cookie n\'existe pas');
-      return res.status(400).json({ error: 'Le cookie n\'existe pas' });
-    } else {
-      console.log('Le cookie existe');
-    }
-
-    res.clearCookie('connect.sid', {domain: 'kinomatch.com', path: '/' }).status(200).send('Ok.');    
     // Je renvoie un message de succès au statut 201
     res.status(201).json({ message: 'user loggedout' });
-    },
+  },
   // Je définis la méthode deleteAccount qui permet à un utilisateur de supprimer son compte
   deleteAccount: async function (req, res) {
     // Je définis la variable userID qui récupère l'id de l'utilisateur via la query
@@ -165,7 +158,6 @@ const userController = {
     if (user) {
       await user.destroy();
       req.session = null;
-      res.clearCookie('connect.sid', {domain: 'kinomatch.com', path: '/' }).status(200).send('Ok.');    
     }
     // Je renvoie un message de succès au statut 201 avec l'utilisateur supprimé
     res.status(201).json({ message: 'user deleted', user });
@@ -189,14 +181,24 @@ const userController = {
         const { userID } = req.query;
 
         try {
-            const picture = await Picture.findOne({
+            // // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
+            // if (!userID) {
+            //   throw new Error('userID is not defined');
+            // }
+            
+            // if (userID && req.session.authorized) {
+            // je définis la variable picture qui va chercher dans la bdd la picture de l'utilisateur
+            const foundUser = await User.findOne({
               where: { id: userID },
             });
 
-            console.log('picture:' + picture);
-            console.log('userID:' + userID);
+            const picture = foundUser.picture;
+
+            console.log(picture);
 
             res.status(200).json({ picture });
+            // }
+
         } catch (error) {
           console.error(error);
           res.status(500).send('Internal Server Error');
@@ -224,12 +226,7 @@ const userController = {
   getUserList: async function (req, res) {
     
     try {
-      const userList = await User.findAll(
-        {
-       // sort by id in ascending order
-        order: [['id', 'ASC']],
-        }
-      );
+      const userList = await User.findAll();
       console.log(userList);
       res.status(200).json({ userList });
 
