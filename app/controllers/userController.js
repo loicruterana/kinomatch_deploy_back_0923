@@ -230,8 +230,8 @@ const userController = {
       const userList = await User.findAll({
       // ranger par ordre décroissant
       order: [['id', 'ASC']],
-      // cacher le mot de passe
-      attributes: { exclude: ['password'] },     
+      // cacher le mot de passe, la date de création et la date de modification et la picture
+      attributes: { exclude: ['password','picture', 'createdAt', 'updatedAt'] },     
      });
       console.log(userList);
       res.status(200).json({ userList });
