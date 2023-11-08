@@ -8,6 +8,7 @@ const User = require('../models/user');
 const Picture = require('../models/picture');
 // Je définis une variable bcrypt qui récupère le module bcrypt
 const bcrypt = require('bcrypt');
+const { or } = require('sequelize');
 // Je définis une variable userController qui contient un objet avec les méthodes signupAction, loginAction, logoutAction et deleteAccount
 const userController = {
   // Je définis la méthode signupAction qui permet à un utilisateur de s'inscrire
@@ -226,7 +227,9 @@ const userController = {
   getUserList: async function (req, res) {
     
     try {
-      const userList = await User.findAll();
+      const userList = await User.findAll(
+        [['order', 'DESC']],
+      );
       console.log(userList);
       res.status(200).json({ userList });
 
