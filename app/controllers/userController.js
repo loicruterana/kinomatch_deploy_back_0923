@@ -229,7 +229,7 @@ const userController = {
     try {
       const userList = await User.findAll({
       // ranger par ordre décroissant
-      order: [['id', 'DESC']],
+      order: [['id', 'ASC']],
         
      });
       console.log(userList);
