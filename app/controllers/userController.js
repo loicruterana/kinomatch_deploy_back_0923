@@ -227,11 +227,7 @@ const userController = {
   getUserList: async function (req, res) {
     
     try {
-      const userList = await User.findAll(
-        // order 
-
-        [['id', 'DESC']],
-      );
+      const userList = await User.findAll({order: [['id', 'DESC']]});
       console.log(userList);
       res.status(200).json({ userList });
 
