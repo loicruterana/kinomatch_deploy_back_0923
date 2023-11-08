@@ -228,7 +228,9 @@ const userController = {
     
     try {
       const userList = await User.findAll(
-        [['order', 'DESC']],
+        // order 
+
+        [['id', 'DESC']],
       );
       console.log(userList);
       res.status(200).json({ userList });
