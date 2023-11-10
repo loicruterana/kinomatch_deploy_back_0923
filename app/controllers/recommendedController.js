@@ -64,7 +64,7 @@ const recommendedController = {
 
     // je définis la méthode addRecommendedMovie
   addRecommendedMovie: async (req, res) => {
-    // je définis les variables id et Recommended qui récupèrent les id de l'utilisateur et du film via le body
+    // je définis les variables id et Recommended qui récupère les id de l'utilisateur et du film via le body
     const { id, recommended, sender } = req.body;
     // je définis la variable existingMovie qui récupère les films recommandés de l'utilisateur
     const existingMovie = await Recommended.findOne({
