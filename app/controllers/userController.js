@@ -182,13 +182,6 @@ const userController = {
         const { userID } = req.query;
 
         try {
-            // // je crée une condition qui permet de vérifier si l'id de l'utilisateur est bien défini
-            // if (!userID) {
-            //   throw new Error('userID is not defined');
-            // }
-            
-            // if (userID && req.session.authorized) {
-            // je définis la variable picture qui va chercher dans la bdd la picture de l'utilisateur
             const foundUser = await User.findOne({
               where: { id: userID },
             });
@@ -198,7 +191,6 @@ const userController = {
             console.log(picture);
 
             res.status(200).json({ picture });
-            // }
 
         } catch (error) {
           console.error(error);
@@ -239,9 +231,54 @@ const userController = {
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
-      
+    }
+  },
+
+  getUserFriends: async function (req, res) {
+  
+    // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
+    const { userID } = req.query;
+
+    try {
+      const foundUser = await User.findOne({
+        where: { id: userID },
+      });
+
+      const friends = foundUser.friends;
+
+      console.log(friends);
+
+      res.status(200).json({ friends });
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  },
+
+  addFriend: async function (req, res) {
+  
+    try {
+      const { userID } = req.query;
+      const { friendID } = req.body;
+      const user = await User.findOne({ where: { id: userID } });
+      if (user) {
+        const friends = user.friends || []; // récupère la liste des amis actuels de l'utilisateur
+        // si l'ami n'est pas déjà dans la liste
+        if (!friends.includes(friendID))
+        friends.push(friendID); // ajoute l'ID de l'ami à la liste
+        await user.update({ friends }); // met à jour la propriété friends de l'objet user
+      }
+      res.status(201).json({ message: 'user updated', user });
+      return;
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .json({ error: "Erreur lors de la mise à jour de l'utilisateur" });
     }
   },
 };
+
 // J'exporte mon objet userController
 module.exports = userController;

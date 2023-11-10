@@ -33,7 +33,7 @@ const db = {
       const defaultPassword = await bcrypt.hash('kinopw', 10);
 
       const member = await User.create({
-        email: 'kino@mail.io',
+        email: 'kinoa',
         password: defaultPassword,
       });
 
@@ -51,6 +51,10 @@ const db = {
 
       const picture4 = await Picture.create({
         codePicture: 'yodaprofile',
+      });
+
+      const picture5 = await Picture.create({
+        codePicture: 'sisteractprofile',
       });
 
     } catch (error) {

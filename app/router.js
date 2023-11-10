@@ -8,6 +8,7 @@ const favoritesController = require('./controllers/favoritesController.js');
 const watchedController = require('./controllers/watchedController.js');
 const toWatchController = require('./controllers/toWatchController.js');
 const movieController = require('./controllers/movieController.js');
+const recommendedController = require('./controllers/recommendedController');
 
 // on crée notre routeur
 const router = express.Router();
@@ -72,6 +73,14 @@ router.post('/toWatchMovies', toWatchController.addToWatchMovie);
 //ici je supprime de la bdd un film qu'un user supprime de sa liste "à voir"
 router.delete('/deleteToWatchMovie', toWatchController.deleteToWatchMovie);
 
+//routes films recommandés
+//ici je récupère la liste des films recommandés d'un user
+router.get('/recommendedFilms', recommendedController.recommendedList);
+//ici j'insère en bdd un film qu'un user ajoute à sa liste "recommandés"
+router.post('/recommendedFilms', recommendedController.addRecommendedMovie);
+//ici je supprime de la bdd un film qu'un user supprime de sa liste "recommandés"
+router.delete('/deleteRecommendedFilms', recommendedController.deleteRecommendedMovie);
+
 // routes login
 // route de signup
 router.post('/signup', userController.signupAction);
@@ -95,6 +104,12 @@ router.get('/picture', userController.getUserPicture);
 //route user
 // route de récupération de la liste des users
 router.get('/users', userController.getUserList);
+
+// route friend
+// route de récupération de la liste des amis d'un user
+router.get('/friends', userController.getUserFriends);
+// route d'ajout d'un ami
+router.put('/friends', userController.addFriend);
 
 // on exporte le routeur
 module.exports = router;

@@ -31,6 +31,12 @@ User.init(
       // je définis que l'attribut picture peut être null
       allowNull: true,
     },
+    friends: {
+      // je définis le type de l'attribut friends
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      // je définis que l'attribut friends peut être null
+      allowNull: true,
+    },
   },
   {
     // je définis que le modèle doit utiliser la connexion à la base de données
