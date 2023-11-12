@@ -17,7 +17,7 @@ const recommendedController = {
   
         // Je vérifie si l'utilisateur est autorisé en utilisant req.session.authorized
         // et si c'est le cas, je récupère la liste des films recommandés de l'utilisateur
-        if (userID ) {
+        if (userID && req.session.authorized) {
         // if (userID) {
           console.log('YOOOOOOO');
           const recommendedList = await Recommended.findAll({
@@ -71,7 +71,7 @@ const recommendedController = {
       where: { user_id: receiverUserID.toString(), film_id: movieID.toString(), sentBy: senderUserID.toString() },
     });
     // je vérifie si le film n'est pas déjà recommandé par le même selectedUserId chez l'utilisateur
-    if (!existingMovie ) {
+    if (!existingMovie && req.session.authorized) {
       try {
         // si ce n'est pas le cas, je définis la variable addMovieToRecommended qui ajoute le film dans la bdd Recommended
         const addMovieToRecommended = await Recommended.create({
