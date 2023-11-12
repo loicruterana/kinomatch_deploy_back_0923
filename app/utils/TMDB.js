@@ -140,6 +140,15 @@ const TMDB = {
     let urlrandomPage = '';
 
     if (!isNaN(year1)) {
+      // si plusieurs décennies sont sélectionnées, je crée plusieurs urlDecade
+      if (year1.constructor === Array) {
+        let newArr = year1.join(',').replace(/,/g, '|').split();
+        year1 = newArr;
+        urlDecade = year1.map((year) => {
+          return `&primary_release_date.gte=${year}&primary_release_date.lte=${year}`;
+        });
+        urlDecade = urlDecade.join('');
+      }
       urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`;
     }
 
@@ -185,6 +194,15 @@ const TMDB = {
     let urlNoteGTE = '';
 
     if (!isNaN(year1)) {
+      // si plusieurs décennies sont sélectionnées, je crée plusieurs urlDecade
+      if (year1.constructor === Array) {
+        let newArr = year1.join(',').replace(/,/g, '|').split();
+        year1 = newArr;
+        urlDecade = year1.map((year) => {
+          return `&primary_release_date.gte=${year}&primary_release_date.lte=${year}`;
+        });
+        urlDecade = urlDecade.join('');
+      }
       urlDecade = `&primary_release_date.gte=${year1}&primary_release_date.lte=${year2}`;
     }
 

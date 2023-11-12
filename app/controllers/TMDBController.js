@@ -209,9 +209,27 @@ const TMDBController = {
     // je définis la variable decade qui récupère la décennie via la query string
     const decade = req.query.decade;
     // je définis la variable year1 qui transforme la décennie en nombre correspondant à la première année de la décennie
-    const year1 = Number(decade);
+    let year1 = '';
+    // je vérifie s'il y a une ou plusieurs constantes decade dans la query string
+    if (Array.isArray(decade) && decade.length > 1) {
+      console.log("plusieurs décennies");
+      // je définis la variable year1 qui transforme la décennie en nombre correspondant à la première année de la première décennie
+      year1 = Number(decade[0]);
+    } else {
+      console.log("une seule décennie");
+      year1 = Number(decade);
+    }
     // je définis la variable year2 qui transforme la décennie en nombre correspondant à la dernière année de la décennie
-    const year2 = Number(decade) + 9;
+    let year2 = '';
+    // je vérifie s'il y a une ou plusieurs constantes decade dans la query string
+    if (Array.isArray(decade) && decade.length > 1) {
+      console.log("plusieurs décennies");
+      // je définis la variable year2 qui transforme la décennie en nombre correspondant à la dernière année de la dernière décennie
+      year2 = Number(decade[decade.length - 1]) + 9;
+    } else {
+      console.log("une seule décennie");
+      year2 = Number(decade) + 9;
+    }
     // je définis la variable countryID qui récupère l'id du pays via la query string
     const countryID = req.query.countryID;
     // je définis la variable castID qui récupère l'id de l'acteur via la query string
@@ -256,12 +274,29 @@ const TMDBController = {
     const genreID = req.query.genreID;
     // je définis la variable providerID qui récupère l'id de la plateforme de streaming via la query string
     const providerID = req.query.providerID;
-    // je définis la variable decade qui récupère la décennie via la query string
     const decade = req.query.decade;
     // je définis la variable year1 qui transforme la décennie en nombre correspondant à la première année de la décennie
-    const year1 = Number(decade);
+    let year1 = '';
+    // je vérifie s'il y a une ou plusieurs constantes decade dans la query string
+    if (Array.isArray(decade) && decade.length > 1) {
+      console.log("plusieurs décennies");
+      // je définis la variable year1 qui transforme la décennie en nombre correspondant à la première année de la première décennie
+      year1 = Number(decade[0]);
+    } else {
+      console.log("une seule décennie");
+      year1 = Number(decade);
+    }
     // je définis la variable year2 qui transforme la décennie en nombre correspondant à la dernière année de la décennie
-    const year2 = Number(decade) + 9;
+    let year2 = '';
+    // je vérifie s'il y a une ou plusieurs constantes decade dans la query string
+    if (Array.isArray(decade) && decade.length > 1) {
+      console.log("plusieurs décennies");
+      // je définis la variable year2 qui transforme la décennie en nombre correspondant à la dernière année de la dernière décennie
+      year2 = Number(decade[decade.length - 1]) + 9;
+    } else {
+      console.log("une seule décennie");
+      year2 = Number(decade) + 9;
+    }
     // je définis la variable countryID qui récupère l'id du pays via la query string
     const countryID = req.query.countryID;
     // je définis la variable castID qui récupère l'id de l'acteur via la query string
