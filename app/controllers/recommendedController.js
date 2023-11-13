@@ -1,7 +1,9 @@
 // je définis la variable recommended qui récupère le film recommandé
 const Recommended = require('../models/recommended');
+const User = require('../models/user');
 // je définis la variable TMDB qui récupère les informations du film recommandé
 const TMDB = require('../utils/TMDB');
+const userController = require('./userController');
 
 const recommendedController = {
     // je définis la méthode recommendedList
@@ -31,24 +33,35 @@ const recommendedController = {
   
           // je crée une boucle qui permet de récupérer les informations de chaque film à regarder
           for (const movie of recommendedList) {
-            // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
-            const movieDetails = await TMDB.getMovieDetails(
-              movie.dataValues.film_id
-            );
-            // je convertis les informations de chaque film à regarder en json
-            const response = await movieDetails.json();
-            // je retourne le titre de chaque film à regarder
-            console.log(
-              'movieTitle :',
-              response.title,
-              'movieID :',
-              movie.dataValues.film_id
-            );
-            recommendedListTitles.push({
-              film_id: movie.dataValues.film_id,
-              film_title: response.title,
-            });
-          }
+          // je définis la variable movieDetails qui récupère les informations de chaque film à regarder
+          const movieDetails = await TMDB.getMovieDetails(
+            movie.dataValues.film_id
+          );
+
+          const senderName = await User.findAll({
+            where: {
+              id: movie.dataValues.sentBy,
+            },
+          });
+          // je convertis les informations de chaque film à regarder en json
+          const response = await movieDetails.json();
+          // je retourne le titre de chaque film à regarder
+          console.log(
+            'movieTitle :',
+            response.title,
+            'movieID :',
+            movie.dataValues.film_id,
+            'senderName :',
+            senderName[0].dataValues.email,
+          );
+          recommendedListTitles.push({
+            film_id: movie.dataValues.film_id,
+            film_title: response.title,
+            senderUserID: movie.dataValues.sentBy,
+            senderUserName: senderName[0].dataValues.email,
+            receiverUserID: movie.dataValues.user_id,
+          });
+        }
   
           // res.json(recommendedList);
           res.json({ recommendedListTitles });

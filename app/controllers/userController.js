@@ -234,6 +234,21 @@ const userController = {
     }
   },
 
+  getUserNamebyID: async function (req, res) {
+
+    try {
+      const { userID } = req.query;
+      const user = await User.findOne({ where: { id: userID } });
+      if (user) {
+        const userName = user.email;
+        res.status(200).json({ userName });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  },
+
   getUserFriends: async function (req, res) {
   
     // Je définis la variable userID qui récupère l'id de l'utilisateur via la query string
