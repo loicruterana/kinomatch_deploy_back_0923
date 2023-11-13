@@ -19,7 +19,7 @@ const recommendedController = {
   
         // Je vérifie si l'utilisateur est autorisé en utilisant req.session.authorized
         // et si c'est le cas, je récupère la liste des films recommandés de l'utilisateur
-        if (userID ) {
+        if (userID && req.session.authorized) {
         // if (userID) {
           console.log('YOOOOOOO');
           const recommendedList = await Recommended.findAll({
